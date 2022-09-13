@@ -1,0 +1,6 @@
+/node_modules
+/build
+/dist
+/view/public/assets
+/package-lock.json
+/.env

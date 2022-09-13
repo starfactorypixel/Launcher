@@ -1,0 +1,28 @@
+.switch {
+    display: flex;
+    background: #2E383E;
+    border-radius: 19px;
+    height: 38px;
+    > .list {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        > .item {
+            display: inline-flex;
+            align-items: center;
+            height: 38px;
+            border-radius: 19px;
+            padding: 0px 30px;
+            cursor: pointer;
+            color: #B7BBBD;
+            font: normal 11px "Inter Medium";
+            -webkit-tap-highlight-color: transparent;
+            &.selected {
+                background: rgba(7, 175, 212, 0.16);
+                box-shadow: inset 0px 0px 0px 1px #07AFD4;
+                color: #E8EEED;
+                cursor: default;
+            }
+        }
+    }
+}

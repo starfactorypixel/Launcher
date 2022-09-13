@@ -1,0 +1,95 @@
+.menu {
+    padding-top: 10px;
+    padding-bottom: 33px;
+    > .container {
+        display: flex;
+        justify-content: space-between;
+        > .settings {
+            > .list {
+                display: flex;
+                gap: 50px;
+                > .item {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 2px;
+                    cursor: pointer;
+                    -webkit-tap-highlight-color: transparent;
+                    > .icon {
+                        fill: #5B6B74;
+                    }
+                    > .name {
+                        font: normal 10px "Inter Medium";
+                        color: #5B6B74;
+                    }
+                    &.active {
+                        > .icon {
+                            fill: #E8EEED;
+                        }
+                        > .name {
+                            color: #E8EEED;
+                        }
+                    }
+                    &.conditioner {
+                        @keyframes rotation {
+                            to {
+                                transform: rotateZ(360deg);
+                            }
+                        }
+                        gap: 6px;
+                        > .mode {
+                            display: flex;
+                            gap: 3px;
+                            > .dot {
+                                display: inline-flex;
+                                width: 8px;
+                                height: 8px;
+                                border: 1px solid #5B6B74;
+                                border-radius: 50%;
+                                &.active {
+                                    background: #07AFD4;
+                                    border-color: #07AFD4;
+                                }
+                            }
+                        }
+                        &.active {
+                            > .icon {
+                                animation: calc(calc(6 - var(--mode)) * 0.8s) rotation linear Infinite;
+                            }
+                        }
+                    }
+                }
+            }            
+        }
+    }
+}
+@media (max-width: 900px) {
+    .menu {
+        padding: 30px;
+        padding-top: 5px;
+        padding-bottom: 18px;
+        > .container {
+            width: 100%;
+            max-width: none;
+            margin: 0px;
+        }
+    }
+}
+@media (max-width: 900px) or (max-height: 385px) {
+    .menu {
+        padding: 30px;
+        padding-top: 5px;
+        padding-bottom: 18px;
+    }
+}
+@media (max-width: 720px) {
+    .menu {
+        > .container {
+            > .settings {
+                > .list {
+                    gap: 30px;
+                }
+            }
+        }
+    }
+}

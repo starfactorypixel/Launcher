@@ -1,0 +1,20 @@
+.actions {
+    > .list {
+        display: flex;
+        flex-wrap: wrap;
+        row-gap: 11px;
+        column-gap: 14px;
+        max-width: 300px;
+    }
+}
+@media (max-width: 900px) and (min-height: 800px) {
+    .actions {
+        display: none;
+    }
+}
+
+@media (max-height: 600px) {
+    .actions {
+        display: none;
+    }
+}

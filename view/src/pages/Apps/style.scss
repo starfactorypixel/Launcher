@@ -1,0 +1,104 @@
+@media (min-width: 860px) {
+    .apps {
+        > .group {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 45px;
+            padding-right: calc(calc(100% - 800px) / 2);
+            > .container {
+                display: flex;
+                flex-direction: column;
+                gap: 1px;
+                width: auto;
+                max-width: none;
+                margin: 0px;
+                > .list {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 16px;
+                    width: 100%;
+                    max-width: 569px;
+                    > .item {
+                        display: inline-flex;
+                        cursor: pointer;
+                        border-radius: 8px;
+                        overflow: hidden;
+                        -webkit-tap-highlight-color: transparent;
+                        width: 179px;
+                        height: 102px;
+                        > .preview {
+                            display: inline-flex;
+                            transition: all 0.7s ease;
+                            width: inherit;
+                            height: inherit;
+                            & + .content {
+                                display: none;
+                            }
+                        }
+                        > .content {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-between;
+                            background: var(--background, rgba(255, 255, 255, 0.15));
+                            width: inherit;
+                            height: inherit;
+                            padding: 15px;
+                            > .icon {
+                                display: inline-flex;
+                                width: 44px;
+                                height: 44px;
+                                border-radius: 8px;
+                            }
+                            > .name {
+                                color: var(--color, white);
+                                font: normal 14px "Inter Medium";
+                            }
+                        }
+                        &:hover {
+                            > .preview {
+                                transform: scale(1.1);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media (max-width: 859px) {
+    .apps {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        padding-left: 100px;
+        > .group {
+            display: flex;
+            > .container {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                > .list {
+                    display: flex;
+                    flex-wrap: wrap;
+                    row-gap: 16px;
+                    > .item {
+                        display: inline-flex;
+                        width: 50%;
+                        > .preview {
+                            display: none;
+                        }
+                        > .content {
+                            display: flex;
+                            gap: 16px;
+                            align-items: center;
+                            > .name {
+                                color: #E8EEED;
+                                font: normal 14px "Inter Medium";
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

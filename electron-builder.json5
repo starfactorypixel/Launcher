@@ -1,0 +1,32 @@
+{
+  appId: "pixel-launcher",
+  productName: "Pixel Launcher",
+  files: [
+    "**/*",
+    "!**/*.md",
+    "!**/*.ts",
+    "!**/*.tsx",
+    "!**/tsconfig.json",
+    "!src",
+    "!view/src"
+  ],
+  artifactName: "Setup-${version}.${ext}",
+  directories: {
+    output: "./build",
+    buildResources: "./assets"
+  },
+  win: {
+    icon: "./icons/win/icon.ico"
+  },
+  nsis: {
+    oneClick: true,
+    runAfterFinish: false,
+    perMachine: true
+  },
+  linux: {
+    target: "deb",
+    icon: "./icons/mac/icon.icns",
+    category: "System"
+  },
+  deb: {}
+}

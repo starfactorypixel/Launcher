@@ -1,0 +1,10 @@
+.paragraph {
+    font: normal 14px "Inter Medium";
+    color: #C2C6C8;
+    &:first-child {
+        margin-top: 0px;
+    }
+    &:last-child {
+        margin-bottom: 0px;
+    }
+}

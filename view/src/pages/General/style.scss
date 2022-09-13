@@ -1,0 +1,41 @@
+.general {
+    display: flex;
+    flex-direction: column;
+    padding-top: 30px;
+    overflow: hidden;
+    > .info {
+        &.hidden {
+            visibility: hidden;
+        }
+        > .container {
+            display: flex;
+            gap: 76px;
+        }
+    }
+}
+@media (max-height: 799px) {
+    .general {
+        padding-top: 15px;
+        flex-direction: column-reverse;
+        justify-content: space-between;
+        > .info {
+            > .container {
+                max-width: 600px;
+                flex-wrap: wrap;
+                justify-content: center;
+                row-gap: 45px;
+                column-gap: 75px;
+            }
+        }
+    }
+}
+@media (max-width: 900px) and (min-height: 800px) {
+    .general {
+        > .info {
+            padding: 0px 30px;
+            > .container {
+                justify-content: center;
+            }
+        }
+    }
+}

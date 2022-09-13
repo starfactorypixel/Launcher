@@ -1,0 +1,292 @@
+@media (min-height: 800px) {
+    .configure {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: 100%;
+        height: calc(100vh - 298px);
+        position: relative;
+        > .vehicle {
+            display: flex;
+            flex-direction: column;
+            padding-top: calc(var(--scale, 1) * 55px);
+            > .container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: calc(var(--scale, 1) * 75px);
+                width: 600px;
+                > .image {
+                    height: calc(var(--scale, 1) * 586px);
+                    > .view {
+                        width: 235px;
+                        height: 586px;
+                        fill: none;
+                        stroke: #E8EEED;
+                        transform: scale(var(--scale, 1));
+                        transform-origin: top;
+                    }
+                }
+            }
+            > .settings {
+                > .list {
+                    position: relative;
+                    transform: scale(var(--scale, 1));
+                    z-index: 2;
+                    > .item {
+                        display: flex;
+                        align-items: center;
+                        position: absolute;
+                        &.right {
+                            > .name {
+                                text-align: left;
+                            }
+                        }
+                        &.column {
+                            flex-direction: column;
+                            > .name {
+                                padding: 9px 0px;
+                                text-align: center;
+                            }
+                        }
+                        > .icon-button {
+                            display: inline-flex;
+                            justify-content: center;
+                            align-items: center;
+                            width: 45px;
+                            height: 45px;
+                            background: var(--second-color, #2F5460);
+                            cursor: pointer;
+                            border: 2px solid var(--first-color, #07AFD4);
+                            border-radius: 50%;
+                            -webkit-tap-highlight-color: transparent;
+                        }
+                        > .name {
+                            font: normal 13px "Inter Medium";
+                            color: #E8EEED;
+                            padding: 0px 13px;
+                            text-align: right;
+                            width: 120px;
+                        }
+                        > .line {
+                            width: 85px; 
+                            height: 2px;
+                            stroke: var(--first-color, #07AFD4);
+                        }
+                        > .dot {
+                            width: 4px; 
+                            height: 4px;
+                            fill: var(--first-color, #07AFD4);
+                        }
+                        &.lights {
+                            top: 20px;
+                            left: -45px;
+                            flex-direction: row-reverse;
+                        }
+                        &.lights-details {
+                            align-items: flex-start;
+                            top: -225px;
+                            left: -154px;
+                            z-index: 2;
+                            .button {
+                                position: relative;
+                                z-index: 2;
+                            }
+                            .view {
+                                width: 330px; 
+                                height: 247px; 
+                                fill: none;
+                            }
+                            > .right {
+                                padding-top: 36px;
+                                margin-left: -14px;
+                            }
+                        }
+                        &.left-door {
+                            flex-direction: row-reverse;
+                            top: 260px;
+                            left: -47px;
+                        }
+                        &.right-door {
+                            top: 260px;
+                            left: 395px;
+                        }
+                        &.trunk {
+                            top: 450px;
+                            left: 243px;
+                        }
+                        &.front-trunk {
+                            flex-direction: column-reverse;
+                            top: 45px;
+                            left: 243px;
+                        }
+                        &.green-theme {
+                            --first-color: #00F19F;
+                            --second-color: #2B6459;
+                        }
+                        &.red-theme {
+                            --first-color: #ED0332;
+                            --second-color: #4A2331;
+                        }
+                    }
+                }
+                > .lights-modal {
+                    display: flex;
+                    position: absolute;
+                    top: -200px;
+                    left: 0px;
+                    right: 0px;
+                    padding: 36px 0px;
+                    > .container {
+                        display: flex;
+                        justify-content: flex-end;
+                        width: 100%;
+                        max-width: 800px;
+                        margin: auto;
+                        > .close-button {
+                            display: none;
+                        }
+                        > .content {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 18px;
+                            padding-top: 46px;
+                            > * {
+                                margin: 0px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media (max-height: 799px) {
+    .configure {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        > .vehicle {
+            display: flex;
+            > .settings {
+                display: flex;
+                justify-content: center;
+                > .list {
+                    display: flex;
+                    gap: 16px;
+                    > .item {
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 8px;
+                        min-width: 120px;
+                        > .name {
+                            color: #E8EEED;
+                            font: normal 12px "Inter Medium";
+                        }
+                        > .icon-button {
+                            display: inline-flex;
+                            justify-content: center;
+                            align-items: center;
+                            width: 43px;
+                            height: 43px;
+                            border: 2px solid var(--first-color, #07AFD4);
+                            border-radius: 50%;
+                            background: var(--second-color, #2F5460);
+                        }
+                        > .line {
+                            display: none;
+                        }
+                        > .dot {
+                            display: none;
+                        }
+                        &.green-theme {
+                            --first-color: #00F19F;
+                            --second-color: #2B6459;
+                        }
+                        &.red-theme {
+                            --first-color: #5A6A73;
+                            --second-color: #3D4A50;
+                        }
+                        &.lights-details {
+                            display: none;
+                        }
+                    }
+                }
+                > .lights-modal {
+                    display: flex;
+                    position: absolute;
+                    top: 113px;
+                    left: 0px;
+                    right: 0px;
+                    z-index: 3;
+                    > .container {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex-direction: column-reverse;
+                        width: 100%;
+                        max-width: 800px;
+                        margin: auto;
+                        row-gap: 25px;
+                        column-gap: 40px;
+                        > .content {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 18px;
+                            > * {
+                                margin: 0px;
+                            }
+                        }
+                    }
+                }
+            }
+            > .container {
+                display: none;
+            }
+        }
+    }
+}
+@media (max-height: 400px) {
+    .configure > .vehicle > .settings > .lights-modal > .container {
+        flex-direction: row;
+    }
+}
+@media (max-width: 800px) and (max-height: 799px) {
+    .configure {
+        > .vehicle {
+            > .settings {
+                > .list {
+                    > .item {
+                        min-width: 90px;
+                        > .name {
+                            font-size: 10px;
+                        }
+                        > .icon-button {
+                            width: 36px;
+                            height: 36px;
+                            > .icon {
+                                width: 21.7px;
+                                height: 21.7px;
+                            }
+                        }
+                        &.lights > .icon-button > .icon {
+                            width: 17px;
+                            height: 17px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media (max-width: 900px) and (min-height: 800px) {
+    .configure {
+        > .vehicle {
+            > .settings {
+                > .lights-modal {
+                    right: 30px;
+                }
+            }
+        }
+    }
+}

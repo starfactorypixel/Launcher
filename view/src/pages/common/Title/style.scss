@@ -1,0 +1,14 @@
+.title {
+    font: normal 17px "Inter SemiBold";
+    color: white;
+    margin: 15px 0px;
+    &:first-child {
+        margin-top: 0px;
+    }
+    &:last-child {
+        margin-bottom: 0px;
+    }
+    &:global(.variant-1) {
+        font-size: 22px;
+    }
+}

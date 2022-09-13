@@ -1,0 +1,21 @@
+.navigator-not-installed {
+    justify-content: center;
+    > .section {
+        > .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            > * {
+                margin: 0px;
+            }
+            > .paragraph {
+                text-align: center;
+                max-width: 255px;
+            }
+            > .button {
+                margin-top: 11px;
+            }
+        }
+    }
+}

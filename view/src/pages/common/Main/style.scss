@@ -1,0 +1,6 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    height: calc(calc(100% - 83px) - 37px);
+    overflow: auto;
+}

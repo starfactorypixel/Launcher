@@ -1,0 +1,21 @@
+.speed {
+    display: flex;
+    flex-direction: column;
+    > .content {
+        display: flex;
+        align-items: flex-end;
+        gap: 2px;
+        > .value {
+            font: normal 104px "Inter SemiBold";
+            color: white;
+            margin: 0px;
+            line-height: 0.9;
+        }
+        > .type {
+            font: normal 23px "Inter SemiBold";
+            color: white;
+            margin: 0px;
+            line-height: 1;
+        }
+    }
+}
