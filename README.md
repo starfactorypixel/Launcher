@@ -1,5 +1,12 @@
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/68344264/189981737-6ccf400c-2f67-44d4-9363-58d5de89ae3c.png" />
+</p>
 <h1 align="center">Pixel Launcher</h1>
 <p align="center">Launcher for Pixel OS.</p>
+<p align="center">
+    <a href="https://github.com/starfactorypixel/Launcher/releases/"><img src="https://img.shields.io/github/v/release/starfactorypixel/Launcher" /></a>
+    <a href="https://github.com/starfactorypixel/Launcher/blob/main/LICENSE"><img src="https://img.shields.io/github/license/starfactorypixel/Launcher" /></a>
+</p>
 
 <h2>Installing</h2>
 <p>Preliminary requirements:</p>
@@ -73,4 +80,4 @@
 - [ ] Update view from Figma.
 
 <h2>License</h2>
-<p><a href="./LICENSE">GNU</a></p>
+<p><a href="./LICENSE">GPL-3.0</a></p>
