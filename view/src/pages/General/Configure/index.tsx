@@ -1,75 +1,54 @@
-import * as React from "react";
-import {useState, useCallback, useEffect} from "react";
+import React, {useMemo} from "react";
+import {observer} from "mobx-react";
 import {Button} from "@pages/common/Button";
 import styles from "./style.scss";
 import {VehicleImage} from "./VehicleImage";
 import {Lights} from "./settings/Lights";
 import {LightsDetails} from "./settings/LightsDetails";
-import {LightsModal, LightsSettings} from "./settings/LightsModal";
-import {LeftDoor, LeftDoorProps} from "./settings/LeftDoor";
-import {RightDoor, RightDoorProps} from "./settings/RightDoor";
-import {Trunk, TrunkProps} from "./settings/Trunk";
-import {FrontTrunk, FrontTrunkProps} from "./settings/FrontTrunk";
+import {LightsModal} from "./settings/LightsModal";
+import {LeftDoor} from "./settings/LeftDoor";
+import {RightDoor} from "./settings/RightDoor";
+import {Trunk} from "./settings/Trunk";
+import {FrontTrunk} from "./settings/FrontTrunk";
+import {useScale} from "./hooks/scale";
+import {useLights} from "./hooks/lights";
+import {useLightsDetails} from "./hooks/lights-details";
+import {useRearCamera} from "./hooks/rear-camera";
+import {useDoors} from "./hooks/doors";
+import {useTrunks} from "./hooks/trunks";
 
-export interface ConfigureProps {
-    lights: LightsSettings;
-    doors: [LeftDoorProps, RightDoorProps];
-    trunks: [TrunkProps, FrontTrunkProps];
-    onRearCamera?: () => any;
-    onShowForLightsDetails?: () => any;
-    onHideForLightsDetails?: () => any;
-}
+export const Configure: React.FC = observer(() => {
+    const scale = useScale();
+    const lights = useLights(); 
+    const lightsDetails = useLightsDetails();
+    const doors = useDoors();
+    const trunks = useTrunks();
+    const {rearCameraHandler} = useRearCamera();
 
-export function Configure({lights, doors, trunks, onRearCamera, onShowForLightsDetails, onHideForLightsDetails}: ConfigureProps): React.ReactElement {
-    const getScale = useCallback((): number => {
-        const scale: number = window.innerHeight / 1300;
-        return scale <= 1 ? scale : 1;
-    }, []);
-    const [scale, setScale] = useState(getScale);
-    useEffect(() => {
-        const listener = () => setScale(getScale);
-        window.addEventListener("resize", listener);
-        return () => window.removeEventListener("resize", listener);
-    }, []);
-    const [lightsDetails, setLightsDetails] = useState(false);
-    const handleLightsDetailsOpen = useCallback(() => {
-        onHideForLightsDetails?.();
-        setLightsDetails(true);
-    }, []);
-    const handleLightsClose = useCallback(() => {
-        setLightsDetails(false);
-        onShowForLightsDetails?.();
-    }, []);
-    const [lightsMode, setLightsMode] = useState(lights.mode);
-    const handleLightsMode = useCallback((mode: number) => {
-        setLightsMode(mode);
-        lights.onMode?.(mode);
-    }, []);
-    const style: Record<string, string> = {"--scale": scale.toString()};
+    const style = useMemo<Record<string, string>>(() => {
+        return {"--scale": scale.toString()};
+    }, [scale]);
+
     return <div className={styles.configure} style={style}>
         <div className={styles.vehicle}>
             <div className={styles.settings}>
                 <div className={styles.list}>
-                    {lightsDetails ? <LightsDetails onClose={handleLightsClose} /> : <Lights mode={lights.modes[lightsMode]} onDetailsOpen={handleLightsDetailsOpen} />}
-                    <LeftDoor {...doors[0]} />
-                    <RightDoor {...doors[1]} />
-                    <Trunk {...trunks[0]} />
-                    <FrontTrunk {...trunks[1]} />
+                    {lightsDetails.opened ? <LightsDetails onClose={lightsDetails.close} /> : <Lights mode={lights.mode} onDetailsOpen={lightsDetails.open} />}
+                    <LeftDoor locked={doors.left} onDoor={doors.toggleLeft} />
+                    <RightDoor locked={doors.right} onDoor={doors.toggleRight} />
+                    <Trunk locked={trunks.rear} onTrunk={trunks.toggleRear} />
+                    <FrontTrunk locked={trunks.front} onTrunk={trunks.toggleFront} />
                 </div>
                 <LightsModal
-                    settings={{
-                        ...lights,
-                        mode: lightsMode,
-                        onMode: handleLightsMode
-                    }}
-                    open={lightsDetails}
-                    onClose={handleLightsClose}
+                    lights={lights}
+                    open={lightsDetails.opened}
+                    onClose={lightsDetails.close}
                 />
             </div>
             <div className={styles.container}>
                 <VehicleImage />
-                <Button onClick={onRearCamera}>Rear Camera</Button>
+                <Button onClick={rearCameraHandler}>Rear Camera</Button>
             </div>
         </div>
     </div>;
-}
+});

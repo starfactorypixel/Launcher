@@ -1,6 +1,8 @@
-import * as React from "react";
-import {useState, useCallback} from "react";
+import React, {useCallback, useMemo} from "react";
+import {runInAction} from "mobx";
+import {observer, useLocalObservable} from "mobx-react";
 import styles from "../style.scss";
+import {Item} from "./Item";
 
 export const ConditionerIcon: React.FC = React.memo(() => {
     return <svg className={styles.icon} width="36" height="36">
@@ -8,55 +10,79 @@ export const ConditionerIcon: React.FC = React.memo(() => {
     </svg>;
 });
 
-export interface ConditionerProps {
+export interface ConditionerStore {
     mode: number;
-    onMode?: (mode: number) => any;
 }
 
-export function Conditioner({mode: defaultMode, onMode}: ConditionerProps): React.ReactElement {
-    const [mode, setMode] = useState(defaultMode);
-    const handleClick = useCallback(() => {
+export const Conditioner: React.FC = observer(() => {
+    const store = useLocalObservable<ConditionerStore>(() => ({
+        mode: 3
+    }));
+    const {mode} = store;
+
+    const toggleMode = useCallback(() => {
         let newMode: number = mode + 1;
         if(newMode > 5)
             newMode = 0;
-        setMode(newMode);
-        onMode?.(newMode);
+        runInAction(() => {
+            store.mode = newMode;
+        });
     }, [mode]);
-    const classList: string[] = [styles.item, styles.conditioner];
-    const style: Record<string, string> = {};
-    const modeDotOneClassList: string[] = [styles.dot];
-    const modeDotTwoClassList: string[] = [styles.dot];
-    const modeDotThreeClassList: string[] = [styles.dot];
-    const modeDotFourClassList: string[] = [styles.dot];
-    const modeDotFiveClassList: string[] = [styles.dot];
-    if(mode > 0) {
-        classList.push(styles.active);
-        style["--mode"] = mode.toString();
-        modeDotOneClassList.push(styles.active);
-        if(mode > 1) {
-            modeDotTwoClassList.push(styles.active);
-            if(mode > 2) {
-                modeDotThreeClassList.push(styles.active);
-                if(mode > 3) {
-                    modeDotFourClassList.push(styles.active);
-                    if(mode > 4)
-                        modeDotFiveClassList.push(styles.active);
+
+    const active = useMemo<boolean>(() => mode > 0, [mode]);
+
+    const modeDotClassList = useMemo<string[][]>(() => {
+        const classList: string[][] = [
+            [styles.dot],
+            [styles.dot],
+            [styles.dot],
+            [styles.dot],
+            [styles.dot]
+        ];
+
+        if (mode > 0) {
+            classList[0].push(styles.active);
+            if (mode > 1) {
+                classList[1].push(styles.active);
+                if (mode > 2) {
+                    classList[2].push(styles.active);
+                    if (mode > 3) {
+                        classList[3].push(styles.active);
+                        if (mode > 4) {
+                            classList[4].push(styles.active);
+                        }
+                    }
                 }
             }
         }
-    }
-    return <div 
-        className={classList.join(" ")} 
+
+        return classList;
+    }, [mode]);
+    const modeDotClassNames = useMemo<string[]>(() => {
+        return modeDotClassList.map((classList) => classList.join(" "));
+    }, [modeDotClassList]);
+
+    const style = useMemo<Record<string, string>>(() => {
+        const style: Record<string, string> = {};
+        if (mode > 0) {
+            style["--mode"] = mode.toString();
+        }
+        return style;
+    }, [mode]);
+
+    return <Item
+        icon={<ConditionerIcon />}
+        active={active}
+        className={styles.conditioner}
         style={style}
-        onClick={handleClick}    
+        onClick={toggleMode}
     >
-        <ConditionerIcon />
         <div className={styles.mode}>
-            <div className={modeDotOneClassList.join(" ")} />
-            <div className={modeDotTwoClassList.join(" ")} />
-            <div className={modeDotThreeClassList.join(" ")} />
-            <div className={modeDotFourClassList.join(" ")} />
-            <div className={modeDotFiveClassList.join(" ")} />
+            <div className={modeDotClassNames[0]} />
+            <div className={modeDotClassNames[1]} />
+            <div className={modeDotClassNames[2]} />
+            <div className={modeDotClassNames[3]} />
+            <div className={modeDotClassNames[4]} />
         </div>
-    </div>
-}
+    </Item>;
+});

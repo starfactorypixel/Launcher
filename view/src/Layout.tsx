@@ -9,14 +9,6 @@ export function Layout(): React.ReactElement {
         <StatusBar />
         <MainMenu />
         <Outlet />
-        <BottomMenu 
-            belts={[
-                {belt: true},
-                {belt: false}
-            ]}
-            front={false}
-            airflow
-            conditionerMode={3}
-        />
+        <BottomMenu />
     </>;
 }

@@ -13,9 +13,9 @@ export function NotInstalled(): React.ReactElement {
             container
             containerClassName={styles.container}
         >
-            <Title variant={1}>Навигатор не установлен</Title>
-            <Paragraph className={styles.paragraph}>Выберите стандартное приложение в качестве навигатора</Paragraph>
-            <Button className={styles.button}>Выбрать приложение по умолчанию</Button>
+            <Title variant={1}>Navigator app not selected</Title>
+            <Paragraph className={styles.paragraph}>Choose a default navigator application</Paragraph>
+            <Button className={styles.button}>Select default application</Button>
         </Section>
     </Main>;
 }

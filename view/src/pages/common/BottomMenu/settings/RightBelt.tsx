@@ -1,6 +1,8 @@
-import * as React from "react";
-import {useState, useCallback} from "react";
+import React, {useCallback} from "react";
+import {runInAction} from "mobx";
+import {observer, useLocalObservable} from "mobx-react";
 import styles from "../style.scss";
+import {Item} from "./Item";
 
 export const RightBeltIcon: React.FC = React.memo(() => {
     return <svg className={styles.icon} width="36" height="36">
@@ -11,25 +13,30 @@ export const RightBeltIcon: React.FC = React.memo(() => {
     </svg>;
 });
 
-export interface RightBeltProps {
+export interface RightBeltStore {
     belt: boolean;
-    onBelt?: (belt: boolean) => any;
 }
 
-export function RightBelt({belt, onBelt}: RightBeltProps): React.ReactElement {
-    const [active, setActive] = useState(belt);
-    const handleBelt = useCallback(() => {
-        const newActive: boolean = !active;
-        setActive(newActive);
-        onBelt?.(newActive);
-    }, [active]);
-    const classList: string[] = [styles.item];
-    if(active)
-        classList.push(styles.active);
-    return <div className={classList.join(" ")} onClick={handleBelt}>
-        <RightBeltIcon />
-        <div className={styles.name}>
-            Right belt
-        </div>
-    </div>;
-}
+export const RightBelt: React.FC = observer(() => {
+    const store = useLocalObservable<RightBeltStore>(() => ({
+        belt: false
+    }));
+    const {belt} = store;
+
+    const setBelt = useCallback((belt: boolean) => {
+        runInAction(() => {
+            store.belt = belt;
+        });
+    }, []);
+    
+    const toggleBelt = useCallback(() => {
+        setBelt(!belt);
+    }, [belt]);
+
+    return <Item 
+        icon={<RightBeltIcon />}
+        name="Right belt"
+        active={belt}
+        onClick={toggleBelt}
+    />;
+});

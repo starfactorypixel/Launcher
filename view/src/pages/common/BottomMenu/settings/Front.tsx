@@ -1,6 +1,8 @@
-import * as React from "react";
-import {useState, useCallback} from "react";
+import React, {useCallback, useMemo} from "react";
+import {runInAction} from "mobx";
+import {observer, useLocalObservable} from "mobx-react";
 import styles from "../style.scss";
+import {Item} from "./Item";
 
 export const FrontIcon: React.FC = React.memo(() => {
     return <svg className={styles.icon} width="36" height="36">
@@ -8,25 +10,30 @@ export const FrontIcon: React.FC = React.memo(() => {
     </svg>;
 });
 
-export interface FrontProps {
+export interface FrontStore {
     front: boolean;
-    onFront?: (front: boolean) => any;
 }
 
-export function Front({front, onFront}: FrontProps): React.ReactElement {
-    const [active, setActive] = useState(front);
-    const handleFront = useCallback(() => {
-        const newActive: boolean = !active;
-        setActive(newActive);
-        onFront?.(newActive);
-    }, [active]);
-    const classList: string[] = [styles.item];
-    if(active)
-        classList.push(styles.active);
-    return <div className={classList.join(" ")} onClick={handleFront}>
-        <FrontIcon />
-        <div className={styles.name}>
-            Front
-        </div>
-    </div>;
-}
+export const Front: React.FC = observer(() => {
+    const store = useLocalObservable<FrontStore>(() => ({
+        front: true
+    }));
+    const {front} = store;
+
+    const setFront = useCallback((front: boolean) => {
+        runInAction(() => {
+            store.front = front;
+        });
+    }, []);
+
+    const toggleFront = useCallback(() => {
+        setFront(!front);
+    }, [front]);
+
+    return <Item 
+        icon={<FrontIcon />}
+        name="Front"
+        active={front}
+        onClick={toggleFront}
+    />;
+});

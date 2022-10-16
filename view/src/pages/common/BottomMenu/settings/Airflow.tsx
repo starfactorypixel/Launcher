@@ -1,6 +1,8 @@
-import * as React from "react";
-import {useState, useCallback} from "react";
+import React, {useCallback} from "react";
+import {runInAction} from "mobx";
+import {observer, useLocalObservable} from "mobx-react";
 import styles from "../style.scss";
+import {Item} from "./Item";
 
 export const AirflowIcon: React.FC = React.memo(() => {
     return <svg className={styles.icon} width="36" height="36">
@@ -12,25 +14,30 @@ export const AirflowIcon: React.FC = React.memo(() => {
     </svg>;
 });
 
-export interface AirflowProps {
+export interface AirflowStore {
     airflow: boolean;
-    onAirflow?: (airflow: boolean) => any;
 }
 
-export function Airflow({airflow, onAirflow}: AirflowProps): React.ReactElement {
-    const [active, setActive] = useState(airflow);
-    const handleAirflow = useCallback(() => {
-        const newActive: boolean = !active;
-        setActive(newActive);
-        onAirflow?.(newActive);
-    }, [active]);
-    const classList: string[] = [styles.item];
-    if(active)
-        classList.push(styles.active);
-    return <div className={classList.join(" ")} onClick={handleAirflow}>
-        <AirflowIcon />
-        <div className={styles.name}>
-            Airflow
-        </div>
-    </div>;
-}
+export const Airflow: React.FC = observer(() => {
+    const store = useLocalObservable<AirflowStore>(() => ({
+        airflow: true
+    }));
+    const {airflow} = store;
+
+    const setAirflow = useCallback((airflow: boolean) => {
+        runInAction(() => {
+            store.airflow = airflow;
+        });
+    }, []);
+
+    const toggleAirflow = useCallback(() => {
+        setAirflow(!airflow);
+    }, [airflow]);
+
+    return <Item 
+        icon={<AirflowIcon />}
+        name="Airflow"
+        active={airflow}
+        onClick={toggleAirflow}
+    />;
+});

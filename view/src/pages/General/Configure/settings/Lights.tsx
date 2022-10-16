@@ -4,8 +4,15 @@ import {Line} from "./common/Line";
 import {Dot} from "./common/Dot";
 import styles from "../style.scss";
 
+export const lightsModesNames: string[] = [
+    "Off",
+    "Parking",
+    "Auto",
+    "On"
+];
+
 export interface LightsProps {
-    mode: string;
+    mode: number;
     onDetailsOpen?: () => any;
 }
 
@@ -20,7 +27,7 @@ export function Lights({mode, onDetailsOpen}: LightsProps): React.ReactElement {
             <LightsIcon />
         </button>
         <span className={styles.name}>
-            Lights<br />{mode} Mode
+            Lights<br />{lightsModesNames[mode]} Mode
         </span>
     </div>;
 }

@@ -9,6 +9,7 @@
         "removeComments": true,
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
+        "allowSyntheticDefaultImports": true,
         "baseUrl": "./src"
     },
     "exclude": ["./view"]
