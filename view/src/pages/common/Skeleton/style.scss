@@ -1,0 +1,24 @@
+@keyframes skeleton-anim {
+    100% {
+        opacity: 0.25;
+    }
+}
+
+.skeleton {
+    display: var(--skeleton-display, flex);
+    width: var(--skeleton-width, 0px);
+    height: var(--skeleton-height, 0px);
+    margin: var(--skeleton-margin, 0px);
+    background: #586b75;
+    opacity: 0.1;
+    border-radius: var(--skeleton-border-radius, 6px);
+    animation-name: skeleton-anim;
+    animation-duration: 0.8s;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    cursor: progress;
+    &.circle {
+        border-radius: calc(var(--skeleton-width, 0px) / 2);
+    }
+}

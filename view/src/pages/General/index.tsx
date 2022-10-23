@@ -11,7 +11,7 @@ export default function General(): React.ReactElement {
 
     return <GeneralStoreProvider store={store}>
         <Main className={styles.general}>
-            <div />
+            <section />
             <InfoSection />
             <Section
                 container

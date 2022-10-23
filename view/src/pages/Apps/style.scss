@@ -4,14 +4,13 @@
             display: flex;
             justify-content: flex-end;
             margin-top: 45px;
-            padding-right: calc(calc(100% - 800px) / 2);
+            padding: 0px calc(calc(100% - 800px) / 2);
             > .container {
                 display: flex;
                 flex-direction: column;
                 gap: 1px;
-                width: auto;
-                max-width: none;
                 margin: 0px;
+                width: 569px;
                 > .list {
                     display: flex;
                     flex-wrap: wrap;
@@ -26,6 +25,9 @@
                         -webkit-tap-highlight-color: transparent;
                         width: 179px;
                         height: 102px;
+                        --skeleton-width: 179px;
+                        --skeleton-height: 102px; 
+                        --skeleton-border-radius: 8px;
                         > .preview {
                             display: inline-flex;
                             transition: all 0.7s ease;

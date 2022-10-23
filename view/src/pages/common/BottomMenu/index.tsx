@@ -4,11 +4,11 @@ import {IconButton, IconButtonTheme} from "@pages/common/IconButton";
 import {SettingsIcon} from "@pages/common/IconButton/icons/Settings";
 import {PowerIcon} from "@pages/common/IconButton/icons/Power";
 import styles from "./style.scss";
-import {LeftBelt} from "./settings/LeftBelt";
-import {Front} from "./settings/Front";
-import {Airflow} from "./settings/Airflow";
-import {RightBelt} from "./settings/RightBelt";
-import {Conditioner} from "./settings/Conditioner";
+import {LeftBelt} from "./settings/items/LeftBelt";
+import {Front} from "./settings/items/Front";
+import {Airflow} from "./settings/items/Airflow";
+import {RightBelt} from "./settings/items/RightBelt";
+import {Conditioner} from "./settings/items/Conditioner";
 
 export function BottomMenu(): React.ReactElement {
     const handleSettings = useCallback(() => undefined, []);

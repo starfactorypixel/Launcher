@@ -1,8 +1,9 @@
-import React, {useCallback} from "react";
+import React, {useCallback, useEffect} from "react";
 import {runInAction} from "mobx";
 import {observer, useLocalObservable} from "mobx-react";
-import styles from "../style.scss";
-import {Item} from "./Item";
+import styles from "../../style.scss";
+import {Item} from "../Item";
+import {ItemSkeleton} from "../ItemSkeleton";
 
 export const RightBeltIcon: React.FC = React.memo(() => {
     return <svg className={styles.icon} width="36" height="36">
@@ -15,24 +16,41 @@ export const RightBeltIcon: React.FC = React.memo(() => {
 
 export interface RightBeltStore {
     belt: boolean;
+    loaded: boolean;
 }
 
 export const RightBelt: React.FC = observer(() => {
     const store = useLocalObservable<RightBeltStore>(() => ({
-        belt: false
+        belt: false,
+        loaded: false
     }));
-    const {belt} = store;
+    const {belt, loaded} = store;
+
+    useEffect(() => {
+        (async () => {
+            await new Promise((resolve) => setTimeout(resolve, 1000));
+
+            runInAction(() => {
+                store.belt = false;
+                store.loaded = true;
+            });
+        })();
+    }, []);
 
     const setBelt = useCallback((belt: boolean) => {
         runInAction(() => {
             store.belt = belt;
-        });
+        }); 
     }, []);
     
     const toggleBelt = useCallback(() => {
         setBelt(!belt);
     }, [belt]);
 
+    if (!loaded) {
+        return <ItemSkeleton />;
+    }
+    
     return <Item 
         icon={<RightBeltIcon />}
         name="Right belt"

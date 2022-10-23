@@ -5,7 +5,7 @@ import styles from "./style.scss";
 import {Speed} from "./Speed";
 import {Statistic} from "./Statistic";
 import {FastActions} from "./FastActions";
-import {useGeneralStore} from "./store";
+import {useGeneralStore} from "../store";
 
 export const InfoSection: React.FC = observer(() => {
     const generalStore = useGeneralStore();

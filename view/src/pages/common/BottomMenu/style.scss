@@ -18,9 +18,16 @@
                     > .icon {
                         fill: #5B6B74;
                     }
+                    > .icon-skeleton {
+                        width: 25px;
+                        height: 25px;
+                        margin: 7px 0px;
+                    }
                     > .name {
                         font: normal 10px "Inter Medium";
                         color: #5B6B74;
+                        --skeleton-width: 50px;
+                        --skeleton-height: 12px;
                     }
                     &.active {
                         > .icon {

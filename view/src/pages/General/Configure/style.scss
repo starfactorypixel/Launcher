@@ -114,11 +114,19 @@
                         &.trunk {
                             top: 450px;
                             left: 243px;
+                            > .name {
+                                --skeleton-width: 60px !important;
+                                --skeleton-height: 35px !important;
+                            }
                         }
                         &.front-trunk {
                             flex-direction: column-reverse;
                             top: 45px;
                             left: 243px;
+                            > .name {
+                                --skeleton-width: 60px !important;
+                                --skeleton-height: 35px !important;
+                            }
                         }
                         &.green-theme {
                             --first-color: #00F19F;
@@ -127,6 +135,19 @@
                         &.red-theme {
                             --first-color: #ED0332;
                             --second-color: #4A2331;
+                        }
+                        &.skeleton {
+                            > .line {
+                                visibility: hidden;
+                            }
+                            > .dot {
+                                visibility: hidden;
+                            }
+                            > .name {
+                                --skeleton-display: inline-flex;
+                                --skeleton-width: 65px;
+                                --skeleton-height: 30px;
+                            }
                         }
                     }
                 }

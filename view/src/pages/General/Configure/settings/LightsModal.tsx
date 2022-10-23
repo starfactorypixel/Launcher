@@ -7,7 +7,7 @@ import {Button} from "@pages/common/Button";
 import {ButtonGroup} from "@pages/common/Button/Group";
 import styles from "../style.scss";
 import {Lights} from "../hooks/lights";
-import {lightsModesNames} from "./Lights";
+import {lightsModesNames} from "./items/Lights";
 
 export interface LightsModalProps {
     lights: Lights;

@@ -10,6 +10,8 @@
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
     min-width: 80px;
+    --skeleton-width: 50px;
+    --skeleton-height: 14px;
     &.check.on {
         background: rgba(7, 175, 212, 0.16);
         border: 1px solid #07AFD4;

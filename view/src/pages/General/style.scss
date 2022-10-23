@@ -3,15 +3,6 @@
     flex-direction: column;
     padding-top: 30px;
     overflow: hidden;
-    > .info {
-        &.hidden {
-            visibility: hidden;
-        }
-        > .container {
-            display: flex;
-            gap: 76px;
-        }
-    }
 }
 @media (max-height: 799px) {
     .general {

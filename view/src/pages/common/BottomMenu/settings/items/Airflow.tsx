@@ -1,8 +1,9 @@
-import React, {useCallback} from "react";
+import React, {useCallback, useEffect} from "react";
 import {runInAction} from "mobx";
 import {observer, useLocalObservable} from "mobx-react";
-import styles from "../style.scss";
-import {Item} from "./Item";
+import styles from "../../style.scss";
+import {Item} from "../Item";
+import {ItemSkeleton} from "../ItemSkeleton";
 
 export const AirflowIcon: React.FC = React.memo(() => {
     return <svg className={styles.icon} width="36" height="36">
@@ -16,13 +17,26 @@ export const AirflowIcon: React.FC = React.memo(() => {
 
 export interface AirflowStore {
     airflow: boolean;
+    loaded: boolean;
 }
 
 export const Airflow: React.FC = observer(() => {
     const store = useLocalObservable<AirflowStore>(() => ({
-        airflow: true
+        airflow: false,
+        loaded: false
     }));
-    const {airflow} = store;
+    const {airflow, loaded} = store;
+
+    useEffect(() => {
+        (async () => {
+            await new Promise((resolve) => setTimeout(resolve, 1000));
+
+            runInAction(() => {
+                store.airflow = true;
+                store.loaded = true;
+            });
+        })();
+    }, []);
 
     const setAirflow = useCallback((airflow: boolean) => {
         runInAction(() => {
@@ -33,6 +47,10 @@ export const Airflow: React.FC = observer(() => {
     const toggleAirflow = useCallback(() => {
         setAirflow(!airflow);
     }, [airflow]);
+
+    if (!loaded) {
+        return <ItemSkeleton />;
+    }
 
     return <Item 
         icon={<AirflowIcon />}

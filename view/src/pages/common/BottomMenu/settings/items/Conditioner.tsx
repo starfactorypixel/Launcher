@@ -1,8 +1,9 @@
-import React, {useCallback, useMemo} from "react";
+import React, {useCallback, useEffect, useMemo} from "react";
 import {runInAction} from "mobx";
 import {observer, useLocalObservable} from "mobx-react";
-import styles from "../style.scss";
-import {Item} from "./Item";
+import styles from "../../style.scss";
+import {Item} from "../Item";
+import {ItemSkeleton} from "../ItemSkeleton";
 
 export const ConditionerIcon: React.FC = React.memo(() => {
     return <svg className={styles.icon} width="36" height="36">
@@ -12,13 +13,26 @@ export const ConditionerIcon: React.FC = React.memo(() => {
 
 export interface ConditionerStore {
     mode: number;
+    loaded: boolean;
 }
 
 export const Conditioner: React.FC = observer(() => {
     const store = useLocalObservable<ConditionerStore>(() => ({
-        mode: 3
+        mode: 0,
+        loaded: false
     }));
-    const {mode} = store;
+    const {mode, loaded} = store;
+
+    useEffect(() => {
+        (async () => {
+            await new Promise((resolve) => setTimeout(resolve, 1000));
+
+            runInAction(() => {
+                store.mode = 3;
+                store.loaded = true;
+            });
+        })();
+    }, []);
 
     const toggleMode = useCallback(() => {
         let newMode: number = mode + 1;
@@ -69,6 +83,10 @@ export const Conditioner: React.FC = observer(() => {
         }
         return style;
     }, [mode]);
+
+    if (!loaded) {
+        return <ItemSkeleton />;
+    }
 
     return <Item
         icon={<ConditionerIcon />}

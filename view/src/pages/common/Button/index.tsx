@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, {useMemo} from "react";
 import styles from "./style.scss";
 
 export interface ButtonProps {
@@ -11,15 +11,25 @@ export interface ButtonProps {
 }
 
 export function Button({className, variant = 0, check = false, on = false, children, onClick}: ButtonProps): React.ReactElement {
-    const classList: string[] = [styles.button];
-    if(className)
-        classList.push(className);
-    if(variant !== 0)
-        classList.push("variant-" + variant);
-    if(check)
-        classList.push(styles.check);
-    if(on)
-        classList.push(styles.on);
+    const classList = useMemo<string[]>(() => {
+        const classList: string[] = [styles.button];
+
+        if (className) {
+            classList.push(className);
+        }
+        if (variant !== 0) {
+            classList.push("variant-" + variant);
+        }
+        if (check) {
+            classList.push(styles.check);
+        }
+        if (on) {
+            classList.push(styles.on);
+        }
+
+        return classList;
+    }, [className, variant, check, on]);
+
     return <button className={classList.join(" ")} onClick={onClick}>
         {children}
     </button>;

@@ -1,5 +1,5 @@
 import * as React from "react";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {MemoryRouter, Route, Routes} from "react-router-dom";
 import Loading from "@pages/Loading";
 import NotFound from "@pages/NotFound";
 import {Layout} from "./Layout";
@@ -16,7 +16,7 @@ export const ChargingPage = React.lazy(() => import("@pages/Charging"));
 export function App(): React.ReactElement {
     return <div className={styles.app}>
         <React.Suspense fallback={<Loading />}>
-            <BrowserRouter>
+            <MemoryRouter>
                 <Routes>
                     <Route path="/" element={<Layout />}>
                         <Route index element={<GeneralPage />} />
@@ -26,7 +26,7 @@ export function App(): React.ReactElement {
                         <Route path="*" element={<NotFound />} />
                     </Route>
                 </Routes>
-            </BrowserRouter>
+            </MemoryRouter>
         </React.Suspense>
     </div>;
 }

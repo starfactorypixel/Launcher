@@ -1,0 +1,8 @@
+.info {
+    &.hidden {
+        visibility: hidden;
+    }
+    > .container {
+        display: flex;
+    }
+}
