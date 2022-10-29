@@ -1,7 +1,7 @@
 import * as React from "react";
 import styles from "./style.scss";
 import {StatusBar} from "@pages/common/StatusBar";
-import {Main} from "@pages/common/Main";
+import {Page} from "@pages/common/Page";
 
 export const LoadingIcon: React.FC = React.memo(() => {
     return <svg width="100" height="100">
@@ -44,8 +44,8 @@ export const LoadingIcon: React.FC = React.memo(() => {
 export default function Loading(): React.ReactElement {
     return <>
         <StatusBar />
-        <Main className={styles.loading}>
+        <Page className={styles.loading}>
             <LoadingIcon />
-        </Main>
+        </Page>
     </>;
 }

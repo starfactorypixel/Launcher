@@ -1,9 +1,9 @@
 import React, {useEffect} from "react";
 import {runInAction} from "mobx";
 import {observer, useLocalObservable} from "mobx-react";
-import styles from "./style.scss";
-import {Main} from "@pages/common/Main";
+import {Page} from "@pages/common/Page";
 import {App, Group} from "./Group";
+import styles from "./style.scss";
 
 export interface AppsStore {
     apps: App[];
@@ -229,7 +229,7 @@ export const Apps: React.FC = observer(() => {
         })();
     }, []);
 
-    return <Main className={styles.apps}>
+    return <Page className={styles.apps}>
         <Group 
             name="Favorites"
             apps={favorites}
@@ -242,7 +242,7 @@ export const Apps: React.FC = observer(() => {
             skeleton={!loaded}
             skeletonAppsCount={12}
         />
-    </Main>;
+    </Page>;
 });
 
 export default Apps;

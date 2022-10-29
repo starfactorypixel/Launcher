@@ -1,8 +1,8 @@
 import * as React from "react";
-import {Main} from "@pages/common/Main";
+import {Page} from "@pages/common/Page";
 
 export default function Charging(): React.ReactElement {
-    return <Main>
+    return <Page>
         
-    </Main>;
+    </Page>;
 }

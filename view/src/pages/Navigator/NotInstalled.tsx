@@ -1,13 +1,13 @@
 import * as React from "react";
 import styles from "./style.scss";
-import {Main} from "@pages/common/Main";
+import {Page} from "@pages/common/Page";
 import {Section} from "@pages/common/Section";
 import {Title} from "@pages/common/Title";
 import {Paragraph} from "@pages/common/Paragraph";
 import {Button} from "@pages/common/Button";
 
 export function NotInstalled(): React.ReactElement {
-    return <Main className={styles["navigator-not-installed"]}>
+    return <Page className={styles["navigator-not-installed"]}>
         <Section 
             className={styles.section}
             container
@@ -17,5 +17,5 @@ export function NotInstalled(): React.ReactElement {
             <Paragraph className={styles.paragraph}>Choose a default navigator application</Paragraph>
             <Button className={styles.button}>Select default application</Button>
         </Section>
-    </Main>;
+    </Page>;
 }

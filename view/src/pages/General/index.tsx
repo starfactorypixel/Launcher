@@ -1,5 +1,5 @@
 import React, {useMemo} from "react";
-import {Main} from "@pages/common/Main";
+import {Page} from "@pages/common/Page";
 import {Section} from "@pages/common/Section";
 import styles from "./style.scss";
 import {InfoSection} from "./InfoSection";
@@ -10,7 +10,7 @@ export default function General(): React.ReactElement {
     const store = useMemo(() => new GeneralStore, []);
 
     return <GeneralStoreProvider store={store}>
-        <Main className={styles.general}>
+        <Page className={styles.general}>
             <section />
             <InfoSection />
             <Section
@@ -20,6 +20,6 @@ export default function General(): React.ReactElement {
             >
                 <Configure />
             </Section>
-        </Main>
+        </Page>
     </GeneralStoreProvider>;
 }
