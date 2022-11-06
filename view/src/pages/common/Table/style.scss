@@ -1,0 +1,23 @@
+.table {
+    > .head {
+        &::after {
+            display: block;
+            width: 100%;
+            height: 8px;
+            content: "";
+        }
+    }
+    .row {
+        > th.cell {
+            font: normal 17px "Inter SemiBold";
+            color: white;
+            margin-bottom: 30px;
+        }
+        > td.cell {
+            font: normal 14px "Inter Medium";
+            line-height: 17px;
+            padding: 4px 0px;
+            color: #b3b8bb; 
+        }
+    }
+}

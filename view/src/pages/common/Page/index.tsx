@@ -1,23 +1,27 @@
-import React, {useMemo} from "react";
-import styles from "./style.scss";
+import React, {useEffect} from "react";
+import {runInAction} from "mobx";
+import {Main, MainProps} from "../Main";
+import {usePageConfig} from "./config";
 
-export interface PageProps {
-    className?: string;
-    children?: React.ReactNode;
+export interface PageProps extends MainProps {
+    hideNavMenu?: boolean;
+    bottomMenu?: React.ReactNode;
 }
 
-export function Page({className, children}: PageProps): React.ReactElement {
-    const classList = useMemo<string[]>(() => {
-        const classList: string[] = [styles.main];
+export function Page({hideNavMenu = false, bottomMenu = null, ...props}: PageProps): React.ReactElement {
+    const config = usePageConfig();
 
-        if (className) {
-            classList.push(className);
-        }
+    useEffect(() => {
+        runInAction(() => {
+            config.navMenuHidden = hideNavMenu;
+        });
+    }, [hideNavMenu]);
 
-        return classList;
-    }, [className]);
+    useEffect(() => {
+        runInAction(() => {
+            config.bottomMenu = bottomMenu;
+        });
+    }, [bottomMenu]);
 
-    return <div className={classList.join(" ")}>
-        {children}
-    </div>;
+    return <Main {...props} />;
 }

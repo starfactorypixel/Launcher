@@ -7,4 +7,13 @@
     &:last-child {
         margin-bottom: 0px;
     }
+    &.align-left {
+        text-align: left;
+    }
+    &.align-center {
+        text-align: center;
+    }
+    &.align-right {
+        text-align: right;
+    }
 }

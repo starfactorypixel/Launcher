@@ -11,7 +11,6 @@ import {appPath, devMode, usageWebpackMiddleware} from "./config";
     const window = new BrowserWindow({
         width,
         height,
-        icon: join(path, "./assets/icon.png"),
         title: "Pixel Launcher",
         frame: false,
         transparent: true,

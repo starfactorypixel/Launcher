@@ -1,7 +1,9 @@
 import * as React from "react";
-import {MemoryRouter, Route, Routes} from "react-router-dom";
+import {createMemoryRouter, RouterProvider} from "react-router-dom";
 import Loading from "@pages/Loading";
-import NotFound from "@pages/NotFound";
+import NotFoundPage from "@pages/NotFound";
+import {PageConfigurator} from "@pages/common/Page/config";
+import {settingsRoute} from "@pages/Settings";
 import {Layout} from "./Layout";
 import styles from "./App.scss";
 
@@ -13,20 +15,42 @@ export const AppsPage = React.lazy(() => import("@pages/Apps"));
 
 export const ChargingPage = React.lazy(() => import("@pages/Charging"));
 
+export const rootRouter = createMemoryRouter([
+    {
+        path: "/",
+        element: <Layout />,
+        children: [
+            {
+                index: true,
+                element: <GeneralPage />
+            },
+            {
+                path: "navigator",
+                element: <NavigatorPage />
+            },
+            {
+                path: "apps",
+                element: <AppsPage />
+            },
+            {
+                path: "charging",
+                element: <ChargingPage />
+            },
+            settingsRoute,
+            {
+                path: "*",
+                element: <NotFoundPage />
+            }
+        ]
+    }
+]);
+
 export function App(): React.ReactElement {
     return <div className={styles.app}>
         <React.Suspense fallback={<Loading />}>
-            <MemoryRouter>
-                <Routes>
-                    <Route path="/" element={<Layout />}>
-                        <Route index element={<GeneralPage />} />
-                        <Route path="navigator" element={<NavigatorPage />} />
-                        <Route path="apps" element={<AppsPage />} />
-                        <Route path="charging" element={<ChargingPage />} />
-                        <Route path="*" element={<NotFound />} />
-                    </Route>
-                </Routes>
-            </MemoryRouter>
+            <PageConfigurator>
+                <RouterProvider router={rootRouter} />
+            </PageConfigurator>
         </React.Suspense>
     </div>;
 }

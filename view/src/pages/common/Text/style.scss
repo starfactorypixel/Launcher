@@ -1,0 +1,10 @@
+.text {
+    color: #E8EEED;
+    font: normal 15px "Inter Medium";
+    &.font-weight-medium {
+        font-family: "Inter Medium";
+    }
+    &.font-weight-semibold {
+        font-family: "Inter Semibold";
+    }
+}

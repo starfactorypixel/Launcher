@@ -6,7 +6,7 @@ import {InfoSection} from "./InfoSection";
 import {Configure} from "./Configure";
 import {GeneralStore, GeneralStoreProvider} from "./store";
 
-export default function General(): React.ReactElement {
+export default function GeneralPage(): React.ReactElement {
     const store = useMemo(() => new GeneralStore, []);
 
     return <GeneralStoreProvider store={store}>

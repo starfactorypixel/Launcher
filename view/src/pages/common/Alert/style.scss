@@ -1,0 +1,10 @@
+.alert {
+    display: flex;
+    align-items: center;
+    &.error {
+        justify-content: center;
+    }
+    &.access {
+        justify-content: space-between;
+    }
+}

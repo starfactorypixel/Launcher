@@ -11,7 +11,7 @@ export interface AppsStore {
     loaded: boolean;
 }
 
-export const Apps: React.FC = observer(() => {
+export const AppsPage: React.FC = observer(() => {
     const store = useLocalObservable<AppsStore>(() => ({
         apps: [],
         favorites: [],
@@ -245,4 +245,4 @@ export const Apps: React.FC = observer(() => {
     </Page>;
 });
 
-export default Apps;
+export default AppsPage;

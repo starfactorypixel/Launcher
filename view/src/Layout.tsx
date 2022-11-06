@@ -1,14 +1,18 @@
-import * as React from "react";
+import React from "react";
 import {Outlet} from "react-router-dom";
+import {observer} from "mobx-react";
+import {usePageConfig} from "@pages/common/Page/config";
 import {StatusBar} from "@pages/common/StatusBar";
-import {MainMenu} from "@pages/common/MainMenu";
+import {NavMenu} from "@pages/common/NavMenu";
 import {BottomMenu} from "@pages/common/BottomMenu";
 
-export function Layout(): React.ReactElement {
+export const Layout: React.FC = observer(() => {
+    const pageConfig = usePageConfig();
+
     return <>
         <StatusBar />
-        <MainMenu />
+        {!pageConfig.navMenuHidden ? <NavMenu /> : null}
         <Outlet />
         <BottomMenu />
     </>;
-}
+});

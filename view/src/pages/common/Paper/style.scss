@@ -1,0 +1,15 @@
+.paper {
+    display: block;
+    background: rgba(240, 240, 240, 0.04);
+    border: 1px solid #5A6A73;
+    border-radius: 8px;
+    padding: 16px;
+    &.theme-red {
+        border-color: #ED0332;
+        background: rgba(237, 3, 50, 0.15);
+    }
+    &.theme-aqua {
+        border-color: #07AFD4;
+        background: rgba(7, 175, 212, 0.15);
+    }
+}

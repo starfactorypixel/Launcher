@@ -1,0 +1,15 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    height: calc(calc(100% - 83px) - 37px);
+    overflow: auto;
+    &.v-align-top {
+        justify-content: flex-start;
+    }
+    &.v-align-center {
+        justify-content: center;
+    }
+    &.v-align-bottom {
+        justify-content: flex-end;
+    }
+}

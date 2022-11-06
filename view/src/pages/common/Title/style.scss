@@ -8,7 +8,16 @@
     &:last-child {
         margin-bottom: 0px;
     }
-    &:global(.variant-1) {
+    &.variant-1 {
         font-size: 22px;
+    }
+    &.align-left {
+        text-align: left;
+    }
+    &.align-center {
+        text-align: center;
+    }
+    &.align-right {
+        text-align: right;
     }
 }
