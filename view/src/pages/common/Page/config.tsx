@@ -25,7 +25,9 @@ export interface PageConfiguratorProps {
 export function PageConfigurator({children}: PageConfiguratorProps): React.ReactElement {
     const config = useLocalObservable<Partial<PageConfig>>(() => ({}));
 
-    return <PageConfiguratorContext.Provider value={config}>
-        {children}
-    </PageConfiguratorContext.Provider>;
+    return (
+        <PageConfiguratorContext.Provider value={config}>
+            {children}
+        </PageConfiguratorContext.Provider>
+    );
 }

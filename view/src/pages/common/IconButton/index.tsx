@@ -12,29 +12,34 @@ export interface IconButtonProps {
     label?: string | null;
     theme?: IconButtonTheme;
     children?: React.ReactNode;
-    onClick?: () => any;
+    onClick?: () => void;
 }
 
-export function IconButton({className = null, label = null, theme = IconButtonTheme.DEFAULT, children, onClick}: IconButtonProps): React.ReactElement {
+export function IconButton({
+    className = null,
+    label = null,
+    theme = IconButtonTheme.DEFAULT,
+    children,
+    onClick
+}: IconButtonProps): React.ReactElement {
     const classList: string[] = [styles["icon-button"]];
-    if(className !== null)
-        classList.push(className);
-    if(theme !== IconButtonTheme.DEFAULT) {
-        switch(theme) {
+    if (className !== null) classList.push(className);
+    if (theme !== IconButtonTheme.DEFAULT) {
+        switch (theme) {
             case IconButtonTheme.GREY:
                 classList.push(styles["theme-grey"]);
-            break;
+                break;
             case IconButtonTheme.RED:
                 classList.push(styles["theme-red"]);
-            break;
+                break;
         }
     }
-    return <div className={classList.join(" ")}>
-        <button className={styles.button} onClick={onClick}>
-            {children}
-        </button>
-        {label ? <div className={styles.label}>
-            {label}
-        </div> : null}
-    </div>;
+    return (
+        <div className={classList.join(" ")}>
+            <button className={styles.button} onClick={onClick}>
+                {children}
+            </button>
+            {label ? <div className={styles.label}>{label}</div> : null}
+        </div>
+    );
 }

@@ -27,8 +27,8 @@ export function Cell({header = false, children, ...props}: CellProps): React.Rea
     }, [props.className]);
 
     return React.createElement(
-        header ? "th" : "td", 
-        {className: classList.join(" "), ...props}, 
+        header ? "th" : "td",
+        {className: classList.join(" "), ...props},
         children
     );
 }

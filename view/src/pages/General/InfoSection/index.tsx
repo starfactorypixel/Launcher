@@ -13,19 +13,21 @@ export const InfoSection: React.FC = observer(() => {
 
     const classList = useMemo<string[]>(() => {
         const classList: string[] = [styles.info];
+
         if (infoHidden) {
             classList.push(styles.hidden);
         }
+
         return classList;
     }, [infoHidden]);
 
-    return <Section 
-        container
-        className={classList.join(" ")}
-        containerClassName={styles.container}
-    >
-        <Speed />
-        <Statistic />
-        <FastActions />
-    </Section>;
+    return (
+        <Section container className={classList.join(" ")} containerClassName={styles.container}>
+            <Speed />
+            <Statistic />
+            <FastActions />
+        </Section>
+    );
 });
+
+InfoSection.displayName = "InfoSection";

@@ -2,10 +2,10 @@
     display: inline-flex;
     justify-content: center;
     background: rgba(240, 240, 240, 0.04);
-    color: #C2C6C8;
+    color: #c2c6c8;
     font: normal 11px "Inter Medium";
     padding: 11px 16px;
-    border: 1px solid #5A6A73;
+    border: 1px solid #5a6a73;
     border-radius: 32px;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
@@ -14,7 +14,7 @@
     --skeleton-height: 14px;
     &.check.on {
         background: rgba(7, 175, 212, 0.16);
-        border: 1px solid #07AFD4;
+        border: 1px solid #07afd4;
     }
     &:global(.variant-1) {
         font-family: "Inter MediumItalic";

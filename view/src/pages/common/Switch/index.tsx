@@ -4,7 +4,7 @@ import styles from "./style.scss";
 
 export interface SwitchProps {
     options: string[];
-    onOption?: (option: number) => any;
+    onOption?: (option: number) => void;
     defaultOption?: number;
 }
 
@@ -14,20 +14,23 @@ export function Switch({options, onOption, defaultOption}: SwitchProps): React.R
         setSelectedOption(option);
         onOption?.(option);
     }, []);
-    return <div className={styles.switch}>
-        <div className={styles.list}>
-            {options.map((option, index) => {
-                const classList: string[] = [styles.item];
-                if(index === selectedOption)
-                    classList.push(styles.selected);
-                return <span 
-                    key={index} 
-                    className={classList.join(" ")}
-                    onClick={handleSelect.bind(undefined, index)}    
-                >
-                    {option}
-                </span>;
-            })}
+    return (
+        <div className={styles.switch}>
+            <div className={styles.list}>
+                {options.map((option, index) => {
+                    const classList: string[] = [styles.item];
+                    if (index === selectedOption) classList.push(styles.selected);
+                    return (
+                        <span
+                            key={index}
+                            className={classList.join(" ")}
+                            onClick={handleSelect.bind(undefined, index)}
+                        >
+                            {option}
+                        </span>
+                    );
+                })}
+            </div>
         </div>
-    </div>;
+    );
 }

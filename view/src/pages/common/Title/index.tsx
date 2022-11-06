@@ -12,7 +12,12 @@ export interface TitleProps {
     children: string;
 }
 
-export function Title({className, variant = null, align = null, children}: TitleProps): React.ReactElement {
+export function Title({
+    className,
+    variant = null,
+    align = null,
+    children
+}: TitleProps): React.ReactElement {
     const classList = useMemo<string[]>(() => {
         const classList: string[] = [styles.title];
 
@@ -29,7 +34,5 @@ export function Title({className, variant = null, align = null, children}: Title
         return classList;
     }, [className, variant, align]);
 
-    return <h4 className={classList.join(" ")}>
-        {children}
-    </h4>;
+    return <h4 className={classList.join(" ")}>{children}</h4>;
 }

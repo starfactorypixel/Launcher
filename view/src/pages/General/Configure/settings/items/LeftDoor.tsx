@@ -10,28 +10,30 @@ import {LeftDoorSkeleton} from "./LeftDoorSkeleton";
 export interface LeftDoorProps {
     locked?: boolean;
     skeleton?: boolean;
-    onDoor?: () => any;
+    onDoor?: () => void;
 }
 
-export function LeftDoor({locked = false, skeleton = false, onDoor}: LeftDoorProps): React.ReactElement {
+export function LeftDoor({
+    locked = false,
+    skeleton = false,
+    onDoor
+}: LeftDoorProps): React.ReactElement {
     if (skeleton) {
         return <LeftDoorSkeleton />;
     }
-    
-    return <Item 
-        className={styles["left-door"]}
-        theme={locked ? ItemTheme.RED : ItemTheme.GREEN}
-    >
-        <Dot />
-        <Line />
-        <button 
-            className={styles["icon-button"]} 
-            onClick={onDoor}
-        >
-            {locked ? <LockedIcon /> : <UnlockedIcon />}
-        </button>
-        <span className={styles.name}>
-            Door<br />{locked ? "Locked" : "Unlocked"}
-        </span>
-    </Item>;
+
+    return (
+        <Item className={styles["left-door"]} theme={locked ? ItemTheme.RED : ItemTheme.GREEN}>
+            <Dot />
+            <Line />
+            <button className={styles["icon-button"]} onClick={onDoor}>
+                {locked ? <LockedIcon /> : <UnlockedIcon />}
+            </button>
+            <span className={styles.name}>
+                Door
+                <br />
+                {locked ? "Locked" : "Unlocked"}
+            </span>
+        </Item>
+    );
 }

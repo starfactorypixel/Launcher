@@ -7,14 +7,15 @@ export interface ListSkeletonProps {
 }
 
 export function ListSkeleton({appsCount}: ListSkeletonProps): React.ReactElement {
-    return <div className={styles.list}>
-        {[...Array(appsCount)].map((_, index) => {
-            return <div 
-                key={index}
-                className={styles.item}
-            >
-                <Skeleton />
-            </div>;
-        })}
-    </div>;
+    return (
+        <div className={styles.list}>
+            {[...Array(appsCount)].map((_, index) => {
+                return (
+                    <div key={index} className={styles.item}>
+                        <Skeleton />
+                    </div>
+                );
+            })}
+        </div>
+    );
 }

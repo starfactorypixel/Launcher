@@ -8,7 +8,11 @@ export interface PageProps extends MainProps {
     bottomMenu?: React.ReactNode;
 }
 
-export function Page({hideNavMenu = false, bottomMenu = null, ...props}: PageProps): React.ReactElement {
+export function Page({
+    hideNavMenu = false,
+    bottomMenu = null,
+    ...props
+}: PageProps): React.ReactElement {
     const config = usePageConfig();
 
     useEffect(() => {

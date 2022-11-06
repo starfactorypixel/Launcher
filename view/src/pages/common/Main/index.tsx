@@ -10,7 +10,12 @@ export interface MainProps {
     children?: React.ReactNode;
 }
 
-export function Main({verticalAlign = null, className, style, children}: MainProps): React.ReactElement {
+export function Main({
+    verticalAlign = null,
+    className,
+    style,
+    children
+}: MainProps): React.ReactElement {
     const classList = useMemo<string[]>(() => {
         const classList: string[] = [styles.main];
 
@@ -24,7 +29,9 @@ export function Main({verticalAlign = null, className, style, children}: MainPro
         return classList;
     }, [className, verticalAlign]);
 
-    return <div className={classList.join(" ")} style={style}>
-        {children}
-    </div>;
+    return (
+        <div className={classList.join(" ")} style={style}>
+            {children}
+        </div>
+    );
 }

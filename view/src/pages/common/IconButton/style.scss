@@ -5,11 +5,11 @@
     gap: 6px;
     &.theme-grey > .button {
         background: #283237;
-        border-color: #5A6A73;
+        border-color: #5a6a73;
     }
     &.theme-red > .button {
-        background: #4A2331;
-        border-color: #ED0332; 
+        background: #4a2331;
+        border-color: #ed0332;
     }
     > .button {
         display: inline-flex;
@@ -25,7 +25,7 @@
     }
     > .label {
         font: normal 11px "Inter Medium";
-        color: #E8EEED;
+        color: #e8eeed;
     }
 }
 @media (max-width: 800px) or (max-height: 385px) {

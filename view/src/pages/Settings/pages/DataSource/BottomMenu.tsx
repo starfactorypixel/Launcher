@@ -14,13 +14,15 @@ export function BottomMenu(): React.ReactElement {
         navigate("/");
     }, []);
 
-    return <>
-        <IconButton label="Back" theme={IconButtonTheme.GREY} onClick={handleBack}>
-            <LeftArrowIcon />
-        </IconButton>
-        <div />
-        <IconButton label="Close" theme={IconButtonTheme.RED} onClick={handleClose}>
-            <CloseIcon />
-        </IconButton>
-    </>;
+    return (
+        <>
+            <IconButton label="Back" theme={IconButtonTheme.GREY} onClick={handleBack}>
+                <LeftArrowIcon />
+            </IconButton>
+            <div />
+            <IconButton label="Close" theme={IconButtonTheme.RED} onClick={handleClose}>
+                <CloseIcon />
+            </IconButton>
+        </>
+    );
 }

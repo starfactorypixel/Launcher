@@ -12,33 +12,53 @@ import {lightsModesNames} from "./items/Lights";
 export interface LightsModalProps {
     lights: Lights;
     open?: boolean;
-    onClose?: () => any;
+    onClose?: () => void;
 }
 
-export function LightsModal({lights, open = false, onClose}: LightsModalProps): React.ReactElement | null {
-    const {mode, setMode, drl, toggleDrl, fog, toggleFog, dome, toggleDome, ambient, toggleAmbient} = lights;
+export function LightsModal({
+    lights,
+    open = false,
+    onClose
+}: LightsModalProps): React.ReactElement | null {
+    const {
+        mode,
+        setMode,
+        drl,
+        toggleDrl,
+        fog,
+        toggleFog,
+        dome,
+        toggleDome,
+        ambient,
+        toggleAmbient
+    } = lights;
 
-    if(!open)
-        return null;
-    return <div className={styles["lights-modal"]}>
-        <div className={styles.container}>
-            <IconButton className={styles["close-button"]} onClick={onClose}>
-                <CloseIcon />
-            </IconButton>
-            <div className={styles.content}>
-                <Title>Lights</Title>
-                <Switch 
-                    options={lightsModesNames}
-                    defaultOption={mode}
-                    onOption={setMode}
-                />
-                <ButtonGroup>
-                    <Button check on={drl} onClick={toggleDrl}>DRL</Button>
-                    <Button check on={fog} onClick={toggleFog}>Fog</Button>
-                    <Button check on={dome} onClick={toggleDome}>Dome</Button>
-                    <Button check on={ambient} onClick={toggleAmbient}>Ambient</Button>
-                </ButtonGroup>
+    if (!open) return null;
+    return (
+        <div className={styles["lights-modal"]}>
+            <div className={styles.container}>
+                <IconButton className={styles["close-button"]} onClick={onClose}>
+                    <CloseIcon />
+                </IconButton>
+                <div className={styles.content}>
+                    <Title>Lights</Title>
+                    <Switch options={lightsModesNames} defaultOption={mode} onOption={setMode} />
+                    <ButtonGroup>
+                        <Button check on={drl} onClick={toggleDrl}>
+                            DRL
+                        </Button>
+                        <Button check on={fog} onClick={toggleFog}>
+                            Fog
+                        </Button>
+                        <Button check on={dome} onClick={toggleDome}>
+                            Dome
+                        </Button>
+                        <Button check on={ambient} onClick={toggleAmbient}>
+                            Ambient
+                        </Button>
+                    </ButtonGroup>
+                </div>
             </div>
         </div>
-    </div>;
+    );
 }

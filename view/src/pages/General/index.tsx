@@ -7,19 +7,17 @@ import {Configure} from "./Configure";
 import {GeneralStore, GeneralStoreProvider} from "./store";
 
 export default function GeneralPage(): React.ReactElement {
-    const store = useMemo(() => new GeneralStore, []);
+    const store = useMemo(() => new GeneralStore(), []);
 
-    return <GeneralStoreProvider store={store}>
-        <Page className={styles.general}>
-            <section />
-            <InfoSection />
-            <Section
-                container
-                className={styles.center}
-                containerClassName={styles.container}
-            >
-                <Configure />
-            </Section>
-        </Page>
-    </GeneralStoreProvider>;
+    return (
+        <GeneralStoreProvider store={store}>
+            <Page className={styles.general}>
+                <section />
+                <InfoSection />
+                <Section container className={styles.center} containerClassName={styles.container}>
+                    <Configure />
+                </Section>
+            </Page>
+        </GeneralStoreProvider>
+    );
 }

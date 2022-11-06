@@ -9,10 +9,14 @@ import {BottomMenu} from "@pages/common/BottomMenu";
 export const Layout: React.FC = observer(() => {
     const pageConfig = usePageConfig();
 
-    return <>
-        <StatusBar />
-        {!pageConfig.navMenuHidden ? <NavMenu /> : null}
-        <Outlet />
-        <BottomMenu />
-    </>;
+    return (
+        <>
+            <StatusBar />
+            {!pageConfig.navMenuHidden ? <NavMenu /> : null}
+            <Outlet />
+            <BottomMenu />
+        </>
+    );
 });
+
+Layout.displayName = "Layout";

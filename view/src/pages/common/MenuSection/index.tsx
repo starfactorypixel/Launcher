@@ -14,21 +14,26 @@ export interface MenuSectionProps extends SectionProps {
     children?: React.ReactNode;
 }
 
-export function MenuSection({width = 600, after, children, ...props}: MenuSectionProps): React.ReactElement {
-    return <Section 
-        {...props}
-        className={styles.menu}
-        container
-        containerClassName={styles.container}
-        containerWidth={width}
-    >
-        <Divider className={styles["top-divider"]} />
-        <div className={styles.list}>
-            {children}
-        </div>
-        {after}
-        <Divider className={styles["bottom-divider"]} />
-    </Section>;
+export function MenuSection({
+    width = 600,
+    after,
+    children,
+    ...props
+}: MenuSectionProps): React.ReactElement {
+    return (
+        <Section
+            {...props}
+            className={styles.menu}
+            container
+            containerClassName={styles.container}
+            containerWidth={width}
+        >
+            <Divider className={styles["top-divider"]} />
+            <div className={styles.list}>{children}</div>
+            {after}
+            <Divider className={styles["bottom-divider"]} />
+        </Section>
+    );
 }
 
 export namespace MenuSection {

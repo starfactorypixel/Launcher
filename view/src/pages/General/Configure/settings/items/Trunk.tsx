@@ -8,7 +8,7 @@ import {TrunkSkeleton} from "./TrunkSkeleton";
 export interface TrunkProps {
     locked?: boolean;
     skeleton?: boolean;
-    onTrunk?: () => any;
+    onTrunk?: () => void;
 }
 
 export function Trunk({locked = false, skeleton = false, onTrunk}: TrunkProps): React.ReactElement {
@@ -16,19 +16,16 @@ export function Trunk({locked = false, skeleton = false, onTrunk}: TrunkProps): 
         return <TrunkSkeleton />;
     }
 
-    return <Item 
-        className={styles.trunk}
-        theme={locked ? ItemTheme.RED : ItemTheme.GREEN}
-        column
-    >
-        <button 
-            className={styles["icon-button"]} 
-            onClick={onTrunk}
-        >
-            {locked ? <LockedIcon /> : <UnlockedIcon />}
-        </button>
-        <span className={styles.name}>
-            Trunk<br />{locked ? "Locked" : "Unlocked"}
-        </span>
-    </Item>;
+    return (
+        <Item className={styles.trunk} theme={locked ? ItemTheme.RED : ItemTheme.GREEN} column>
+            <button className={styles["icon-button"]} onClick={onTrunk}>
+                {locked ? <LockedIcon /> : <UnlockedIcon />}
+            </button>
+            <span className={styles.name}>
+                Trunk
+                <br />
+                {locked ? "Locked" : "Unlocked"}
+            </span>
+        </Item>
+    );
 }

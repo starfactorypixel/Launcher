@@ -6,7 +6,5 @@ export interface ButtonGroupProps {
 }
 
 export function ButtonGroup({children}: ButtonGroupProps): React.ReactElement {
-    return <div className={styles["button-group"]}>
-        {children}
-    </div>;
+    return <div className={styles["button-group"]}>{children}</div>;
 }

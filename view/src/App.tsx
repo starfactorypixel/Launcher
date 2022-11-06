@@ -46,11 +46,13 @@ export const rootRouter = createMemoryRouter([
 ]);
 
 export function App(): React.ReactElement {
-    return <div className={styles.app}>
-        <React.Suspense fallback={<Loading />}>
-            <PageConfigurator>
-                <RouterProvider router={rootRouter} />
-            </PageConfigurator>
-        </React.Suspense>
-    </div>;
+    return (
+        <div className={styles.app}>
+            <React.Suspense fallback={<Loading />}>
+                <PageConfigurator>
+                    <RouterProvider router={rootRouter} />
+                </PageConfigurator>
+            </React.Suspense>
+        </div>
+    );
 }

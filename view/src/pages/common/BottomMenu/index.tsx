@@ -23,29 +23,37 @@ export const BottomMenu: React.FC = observer(() => {
 
     const handlePowerOff = useCallback(() => undefined, []);
 
-    return <Section 
-        className={styles.menu}
-        container
-        containerClassName={styles.container}
-    >
-        {pageConfig.bottomMenu ?? (
-            <>
-                <IconButton label="Settings" theme={IconButtonTheme.GREY} onClick={handleSettings}>
-                    <SettingsIcon />
-                </IconButton>
-                <div className={styles.settings}>
-                    <div className={styles.list}>
-                        <LeftBelt />
-                        <Front />
-                        <Airflow />
-                        <Conditioner />
-                        <RightBelt />
+    return (
+        <Section className={styles.menu} container containerClassName={styles.container}>
+            {pageConfig.bottomMenu ?? (
+                <>
+                    <IconButton
+                        label="Settings"
+                        theme={IconButtonTheme.GREY}
+                        onClick={handleSettings}
+                    >
+                        <SettingsIcon />
+                    </IconButton>
+                    <div className={styles.settings}>
+                        <div className={styles.list}>
+                            <LeftBelt />
+                            <Front />
+                            <Airflow />
+                            <Conditioner />
+                            <RightBelt />
+                        </div>
                     </div>
-                </div>
-                <IconButton label="Power Off" theme={IconButtonTheme.RED} onClick={handlePowerOff}>
-                    <PowerIcon />
-                </IconButton>
-            </>
-        )}
-    </Section>;
+                    <IconButton
+                        label="Power Off"
+                        theme={IconButtonTheme.RED}
+                        onClick={handlePowerOff}
+                    >
+                        <PowerIcon />
+                    </IconButton>
+                </>
+            )}
+        </Section>
+    );
 });
+
+BottomMenu.displayName = "BottomMenu";

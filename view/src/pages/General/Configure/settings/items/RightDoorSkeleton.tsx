@@ -6,21 +6,18 @@ import {Item} from "../common/Item";
 import {Line} from "../common/Line";
 
 export const RightDoorSkeleton: React.FC = React.memo(() => {
-    const classList = useMemo<string[]>(() => ([
-        styles["right-door"],
-        styles.right
-    ]), []);
+    const classList = useMemo<string[]>(() => [styles["right-door"], styles.right], []);
 
-    return <Item className={classList.join(" ")} skeleton>
-        <Dot />
-        <Line />
-        <Skeleton
-            type={SkeletonTypes.CIRCLE}
-            width={45}
-            height={45}
-        />
-        <span className={styles.name}>
-            <Skeleton />
-        </span>
-    </Item>;
+    return (
+        <Item className={classList.join(" ")} skeleton>
+            <Dot />
+            <Line />
+            <Skeleton type={SkeletonTypes.CIRCLE} width={45} height={45} />
+            <span className={styles.name}>
+                <Skeleton />
+            </span>
+        </Item>
+    );
 });
+
+RightDoorSkeleton.displayName = "RightDoorSkeleton";

@@ -38,21 +38,43 @@ export const Statistic: React.FC = observer(() => {
         })();
     }, []);
 
-    return <div className={styles.statistic}>
-        <Title>Statistic</Title>
-        <div className={styles.list}>
-            <Item 
-                icon={<BatteryIcon />}
-                value={loaded ? battery.toLocaleString(undefined, {maximumSignificantDigits: 3}) + "%" : <Skeleton />}
-            />
-            <Item 
-                icon={<ChargeIcon />}
-                value={loaded ? charge.toLocaleString(undefined, {maximumSignificantDigits: 3}) + "w/h" : <Skeleton />}
-            />
-            <Item 
-                icon={<MileageIcon />}
-                value={loaded ? mileage.toLocaleString(undefined, {maximumSignificantDigits: 3}) + " km" : <Skeleton />}
-            />
+    return (
+        <div className={styles.statistic}>
+            <Title>Statistic</Title>
+            <div className={styles.list}>
+                <Item
+                    icon={<BatteryIcon />}
+                    value={
+                        loaded ? (
+                            battery.toLocaleString(undefined, {maximumSignificantDigits: 3}) + "%"
+                        ) : (
+                            <Skeleton />
+                        )
+                    }
+                />
+                <Item
+                    icon={<ChargeIcon />}
+                    value={
+                        loaded ? (
+                            charge.toLocaleString(undefined, {maximumSignificantDigits: 3}) + "w/h"
+                        ) : (
+                            <Skeleton />
+                        )
+                    }
+                />
+                <Item
+                    icon={<MileageIcon />}
+                    value={
+                        loaded ? (
+                            mileage.toLocaleString(undefined, {maximumSignificantDigits: 3}) + " km"
+                        ) : (
+                            <Skeleton />
+                        )
+                    }
+                />
+            </div>
         </div>
-    </div>;
+    );
 });
+
+Statistic.displayName = "Statistic";

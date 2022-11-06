@@ -8,9 +8,10 @@
     "!**/*.tsx",
     "!**/tsconfig.json",
     "!src",
-    "!view/src"
+    "!view/src",
+    ".env"
   ],
-  artifactName: "Setup-${version}.${ext}",
+  artifactName: "Setup-${arch}.${ext}",
   directories: {
     output: "./build",
     buildResources: "./assets"

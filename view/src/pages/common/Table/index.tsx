@@ -18,25 +18,20 @@ export function Table({cellSpacing, head, children, ...props}: TableProps): Reac
         return classList;
     }, [props.className]);
 
-    const style = useMemo<CSSProperties>(() => ({
-        borderSpacing: cellSpacing,
-        ...props.style
-    }), [cellSpacing, props.style]);
+    const style = useMemo<CSSProperties>(
+        () => ({
+            borderSpacing: cellSpacing,
+            ...props.style
+        }),
+        [cellSpacing, props.style]
+    );
 
-    return <table 
-        {...props} 
-        className={classList.join(" ")}
-        style={style}
-    >
-        {head ? (
-            <thead className={styles.head}>
-                {head}
-            </thead>
-        ) : null}
-        <tbody className={styles.body}>
-            {children}
-        </tbody>
-    </table>;
+    return (
+        <table {...props} className={classList.join(" ")} style={style}>
+            {head ? <thead className={styles.head}>{head}</thead> : null}
+            <tbody className={styles.body}>{children}</tbody>
+        </table>
+    );
 }
 
 export * from "./Row";

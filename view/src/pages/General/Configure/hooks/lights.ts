@@ -86,10 +86,10 @@ export function useLights(): Lights {
     return {
         mode,
         setMode,
-        drl, 
+        drl,
         setDrl,
         toggleDrl,
-        fog, 
+        fog,
         setFog,
         toggleFog,
         dome,

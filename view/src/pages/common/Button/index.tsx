@@ -7,10 +7,17 @@ export interface ButtonProps {
     check?: boolean;
     on?: boolean;
     children?: React.ReactNode;
-    onClick?: () => any;
+    onClick?: () => void;
 }
 
-export function Button({className, variant = 0, check = false, on = false, children, onClick}: ButtonProps): React.ReactElement {
+export function Button({
+    className,
+    variant = 0,
+    check = false,
+    on = false,
+    children,
+    onClick
+}: ButtonProps): React.ReactElement {
     const classList = useMemo<string[]>(() => {
         const classList: string[] = [styles.button];
 
@@ -30,7 +37,9 @@ export function Button({className, variant = 0, check = false, on = false, child
         return classList;
     }, [className, variant, check, on]);
 
-    return <button className={classList.join(" ")} onClick={onClick}>
-        {children}
-    </button>;
+    return (
+        <button className={classList.join(" ")} onClick={onClick}>
+            {children}
+        </button>
+    );
 }

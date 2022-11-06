@@ -11,7 +11,7 @@ export function useScale(): number {
         const scale: number = window.innerHeight / 1300;
         return scale <= 1 ? scale : 1;
     }, []);
-    
+
     const store = useLocalObservable<ScaleStore>(() => ({
         scale: getScale()
     }));

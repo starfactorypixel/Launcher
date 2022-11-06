@@ -11,10 +11,15 @@ export interface PaperProps {
     theme?: PaperTheme;
     className?: string;
     children?: React.ReactNode;
-    onClick?: () => any;
+    onClick?: () => void;
 }
 
-export function Paper({theme = PaperTheme.DEFAULT, className, children, onClick}: PaperProps): React.ReactElement {
+export function Paper({
+    theme = PaperTheme.DEFAULT,
+    className,
+    children,
+    onClick
+}: PaperProps): React.ReactElement {
     const classList = useMemo<string[]>(() => {
         const classList: string[] = [styles.paper];
 
@@ -25,17 +30,19 @@ export function Paper({theme = PaperTheme.DEFAULT, className, children, onClick}
         switch (theme) {
             case PaperTheme.RED:
                 classList.push(styles["theme-red"]);
-            break;
+                break;
 
             case PaperTheme.AQUA:
                 classList.push(styles["theme-aqua"]);
-            break;
+                break;
         }
 
         return classList;
     }, [className, theme]);
 
-    return <div className={classList.join(" ")} onClick={onClick}>
-        {children}
-    </div>;
+    return (
+        <div className={classList.join(" ")} onClick={onClick}>
+            {children}
+        </div>
+    );
 }

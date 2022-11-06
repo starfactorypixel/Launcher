@@ -14,7 +14,13 @@ export interface SkeletonProps {
     borderRadius?: number | null;
 }
 
-export function Skeleton({className = null, type = SkeletonTypes.RECTANGLE, width = null, height = null, borderRadius = null}: SkeletonProps): React.ReactElement {
+export function Skeleton({
+    className = null,
+    type = SkeletonTypes.RECTANGLE,
+    width = null,
+    height = null,
+    borderRadius = null
+}: SkeletonProps): React.ReactElement {
     const classList = useMemo<string[]>(() => {
         const classList: string[] = [styles.skeleton];
 
@@ -44,8 +50,5 @@ export function Skeleton({className = null, type = SkeletonTypes.RECTANGLE, widt
         return style;
     }, [width, height, borderRadius]);
 
-    return <div 
-        className={classList.join(" ")} 
-        style={style}
-    />;
+    return <div className={classList.join(" ")} style={style} />;
 }

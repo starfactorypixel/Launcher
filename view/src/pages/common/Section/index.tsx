@@ -9,7 +9,13 @@ export interface SectionProps {
     children?: React.ReactNode;
 }
 
-export function Section({container = false, containerWidth = 0, className, containerClassName, children}: SectionProps): React.ReactElement {
+export function Section({
+    container = false,
+    containerWidth = 0,
+    className,
+    containerClassName,
+    children
+}: SectionProps): React.ReactElement {
     const classList = useMemo<string[]>(() => {
         const classList: string[] = [styles.section];
 
@@ -40,14 +46,15 @@ export function Section({container = false, containerWidth = 0, className, conta
         return style;
     }, [containerWidth]);
 
-    return <section className={classList.join(" ")}>
-        {container ? (
-            <div 
-                className={containerClassList.join(" ")}
-                style={containerStyle}    
-            >
-                {children}
-            </div>
-        ) : children}
-    </section>;
+    return (
+        <section className={classList.join(" ")}>
+            {container ? (
+                <div className={containerClassList.join(" ")} style={containerStyle}>
+                    {children}
+                </div>
+            ) : (
+                children
+            )}
+        </section>
+    );
 }

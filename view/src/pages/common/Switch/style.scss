@@ -1,6 +1,6 @@
 .switch {
     display: flex;
-    background: #2E383E;
+    background: #2e383e;
     border-radius: 19px;
     height: 38px;
     > .list {
@@ -14,13 +14,13 @@
             border-radius: 19px;
             padding: 0px 30px;
             cursor: pointer;
-            color: #B7BBBD;
+            color: #b7bbbd;
             font: normal 11px "Inter Medium";
             -webkit-tap-highlight-color: transparent;
             &.selected {
                 background: rgba(7, 175, 212, 0.16);
-                box-shadow: inset 0px 0px 0px 1px #07AFD4;
-                color: #E8EEED;
+                box-shadow: inset 0px 0px 0px 1px #07afd4;
+                color: #e8eeed;
                 cursor: default;
             }
         }

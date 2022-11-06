@@ -15,7 +15,14 @@ export interface ItemProps {
     children: React.ReactNode;
 }
 
-export function Item({className = null, theme = null, column = false, right = false, skeleton = false, children}: ItemProps): React.ReactElement {
+export function Item({
+    className = null,
+    theme = null,
+    column = false,
+    right = false,
+    skeleton = false,
+    children
+}: ItemProps): React.ReactElement {
     const classList = useMemo<string[]>(() => {
         const classList: string[] = [styles.item];
 
@@ -26,10 +33,10 @@ export function Item({className = null, theme = null, column = false, right = fa
         switch (theme) {
             case ItemTheme.GREEN:
                 classList.push(styles["green-theme"]);
-            break;
+                break;
             case ItemTheme.RED:
                 classList.push(styles["red-theme"]);
-            break;
+                break;
         }
 
         if (column) {
@@ -46,7 +53,5 @@ export function Item({className = null, theme = null, column = false, right = fa
         return classList;
     }, [className, theme, column, skeleton]);
 
-    return <div className={classList.join(" ")}>
-        {children}
-    </div>;
+    return <div className={classList.join(" ")}>{children}</div>;
 }

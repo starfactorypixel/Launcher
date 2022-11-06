@@ -18,52 +18,53 @@ export default function HomeSettingsPage(): React.ReactElement {
         navigate(-1);
     }, []);
 
-    return <Page
-        verticalAlign="center"
-        hideNavMenu
-        bottomMenu={<>
-            <IconButton label="Close" theme={IconButtonTheme.RED} onClick={handleClose}>
-                <CloseIcon />
-            </IconButton>
-        </>}
-        style={{
-            gap: "32px"
-        }}
-    >
-        <Section container>
-            <Title variant={1} align="center">Settings</Title>
-        </Section>
-        <Section container containerWidth={600}>
-            <Alert 
-                type={AlertTypes.ACCESS} 
-                accessButtonText="Grant access to access"
-            >
-                Some access alert
-            </Alert>
-        </Section>
-        <MenuSection>
-            <MenuSection.Link
-                startIcon={<DataSourceIcon />}
-                title="Data Source"
-                to="/settings/data-source"
-            />
-            <MenuSection.Link 
-                startIcon={<FastActionsIcon />}
-                title="Fast Actions"
-                to="/settings/fast-actions"
-                disabled
-            />
-            <MenuSection.Link 
-                startIcon={<LicensesIcon />}
-                title="Licenses"
-                to="/settings/licenses"
-                disabled
-            />
-        </MenuSection>
-        <Section container containerWidth={600}>
-            <Alert type={AlertTypes.ERROR}>
-                Some error or critical information
-            </Alert>
-        </Section>
-    </Page>;
+    return (
+        <Page
+            verticalAlign="center"
+            hideNavMenu
+            bottomMenu={
+                <>
+                    <IconButton label="Close" theme={IconButtonTheme.RED} onClick={handleClose}>
+                        <CloseIcon />
+                    </IconButton>
+                </>
+            }
+            style={{
+                gap: "32px"
+            }}
+        >
+            <Section container>
+                <Title variant={1} align="center">
+                    Settings
+                </Title>
+            </Section>
+            <Section container containerWidth={600}>
+                <Alert type={AlertTypes.ACCESS} accessButtonText="Grant access to access">
+                    Some access alert
+                </Alert>
+            </Section>
+            <MenuSection>
+                <MenuSection.Link
+                    startIcon={<DataSourceIcon />}
+                    title="Data Source"
+                    to="/settings/data-source"
+                />
+                <MenuSection.Link
+                    startIcon={<FastActionsIcon />}
+                    title="Fast Actions"
+                    to="/settings/fast-actions"
+                    disabled
+                />
+                <MenuSection.Link
+                    startIcon={<LicensesIcon />}
+                    title="Licenses"
+                    to="/settings/licenses"
+                    disabled
+                />
+            </MenuSection>
+            <Section container containerWidth={600}>
+                <Alert type={AlertTypes.ERROR}>Some error or critical information</Alert>
+            </Section>
+        </Page>
+    );
 }

@@ -14,26 +14,52 @@
     <li><a href="https://nodejs.org/">Node.js</a> >= <code>16.14.2</code></li>
     <li><a href="https://www.npmjs.com/">npm</a> >= <code>8.16.0</code></li>
     <li><a href="https://www.docker.com/">Docker</a> >= <code>20.10.14</code></li>
-    <li><a href="https://www.gnu.org/software/make/">GNU Make</a> >= <code>3.81</code></li>
 </ul>
 <p>Installing dependencies:</p>
 <pre>npm i</pre>
 
 <h2>Building</h2>
-<p>Build application:</p>
-<pre>npm run build</pre>
-<p>Build application view:</p>
+<p>Build application main (entry point):</p>
+<pre>npm run build:main</pre>
+<p>Build application view (react app):</p>
 <pre>npm run build:view</pre>
-<p>Build Windows X64 application:</p>
-<pre>npm run build:win</pre>
-<p>Build Linux X64 application:</p>
-<pre>npm run build:linux</pre>
+<table>
+    <tr>
+        <th colspan="3">Build application installer</th>
+    </tr>
+    <tr>
+        <th><img src="https://img.shields.io/static/v1?label=Windows&message=x64&color=blue" /></th>
+        <th><img src="https://img.shields.io/static/v1?label=Linux&message=arm64&color=yellow" /></th>
+        <th><img src="https://img.shields.io/static/v1?label=Linux&message=x64&color=yellow" /></th>
+    </tr>
+    <tr>
+        <td>
+            <pre>npm run build:win</pre>
+        </td>
+        <td>
+            <pre>npm run build:linux</pre>
+        </td>
+        <td>
+            <pre>npm run build:linux-x64</pre>
+        </td>
+    </tr>
+</table>
+<p>Build all:</p>
+<pre>npm run build</pre>
+
+<h2>ESLint & Prettier</h2>
+<p>Linter check:</p>
+<pre>npm run lint</pre>
+<p>Linter fix:</p>
+<pre>npm run lint:fix</pre>
+<p>Format code (with Prettier):</p>
+<pre>npm run format</pre>
 
 <h2>Starting</h2>
-<p>Starting in production mode:</p>
-<pre>npm start</pre>
 <p>Starting in development mode:</p>
-<pre>npm run dev</pre>
+<pre>npm start</pre>
+<p>Starting in production mode:</p>
+<pre>npm start:prod</pre>
 
 <h2>File structure</h2>
 <p>List of folders:</p>
@@ -56,6 +82,9 @@
 <p>List of variables:</p>
 <ul>
     <li><code>NODE_ENV</code> - Application mode.</li>
+    <li><code>DEV_PORT</code> - Dev Server port. Default: 15070.</li>
+    <li><code>DEV_TOOLS</code> - Usage DevTools if 1. Default: 0.</li>
+    <li><code>DEV_TOOLS_EXTENSIONS</code> - Usage DevTools extensions (React Developer Tools) if 1. Default: 0.</li>
     <li><code>WEBPACK_DEV</code> - Webpack middleware starting if 1. Default: 0.</li>
 </ul>
 <p><a href="https://www.npmjs.com/package/dotenv">Dotenv</a> support is present!</p>
@@ -70,15 +99,11 @@
     <img src="https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white" />
     <img src="https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white" />
     <img src="https://img.shields.io/badge/webpack-%238DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=black" />
-    <img src="https://img.shields.io/badge/nestjs-%23E0234E.svg?style=for-the-badge&logo=nestjs&logoColor=white" />
+    <img src="https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB" />  
     <img src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white" />
+    <img src="https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white" />
+    <img src="https://img.shields.io/badge/prettier-%23F7B93E.svg?&style=for-the-badge&logo=prettier&logoColor=black" />
 </p>
-
-<h2>Todo list</h2>
-
-- [x] Add build support for Windows and Linux platforms.
-- [ ] Add Protocol L3 support.
-- [ ] Update view from Figma.
 
 <h2>License</h2>
 <p><a href="./LICENSE">GPL-3.0</a></p>

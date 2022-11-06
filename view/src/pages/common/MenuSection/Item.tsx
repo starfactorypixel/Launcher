@@ -18,7 +18,7 @@ export interface ItemCommonProps extends Omit<PaperProps, "children"> {
 
 export interface ItemButtonProps extends ItemCommonProps {
     type?: ItemTypes.BUTTON;
-    onClick?: () => any;
+    onClick?: () => void;
 }
 
 export interface ItemLinkProps extends ItemCommonProps {
@@ -30,12 +30,17 @@ export interface ItemCheckboxProps extends ItemCommonProps {
     type: ItemTypes.CHECKBOX;
     checked?: boolean;
     checkedTheme?: PaperTheme;
-    onClick?: () => any;
+    onClick?: () => void;
 }
 
 export type ItemProps = ItemButtonProps | ItemLinkProps | ItemCheckboxProps;
 
-export function Item({title, startIcon, disabled = false, ...props}: ItemProps): React.ReactElement {
+export function Item({
+    title,
+    startIcon,
+    disabled = false,
+    ...props
+}: ItemProps): React.ReactElement {
     props.type ??= ItemTypes.BUTTON;
 
     const navigate = useNavigate();
@@ -49,10 +54,10 @@ export function Item({title, startIcon, disabled = false, ...props}: ItemProps):
             case ItemTypes.BUTTON:
             case ItemTypes.CHECKBOX:
                 props.onClick?.();
-            break;
+                break;
             case ItemTypes.LINK:
                 navigate(props.to);
-            break;
+                break;
         }
     }, [disabled, props.type]);
 
@@ -66,7 +71,11 @@ export function Item({title, startIcon, disabled = false, ...props}: ItemProps):
         }
 
         return theme;
-    }, [props.theme, props.type, props.type === ItemTypes.CHECKBOX ? props.checkedTheme : undefined]);
+    }, [
+        props.theme,
+        props.type,
+        props.type === ItemTypes.CHECKBOX ? props.checkedTheme : undefined
+    ]);
 
     const classList = useMemo<string[]>(() => {
         const classList: string[] = [styles.item];
@@ -78,25 +87,22 @@ export function Item({title, startIcon, disabled = false, ...props}: ItemProps):
         switch (props.type) {
             case ItemTypes.BUTTON:
                 classList.push(styles.button);
-            break;
+                break;
             case ItemTypes.LINK:
                 classList.push(styles.link);
-            break;
+                break;
             case ItemTypes.CHECKBOX:
                 classList.push(styles.checkbox);
-            break;
+                break;
         }
 
         return classList;
     }, [disabled, props.type]);
 
-    return <Paper 
-        {...props}
-        className={classList.join(" ")}
-        theme={paperTheme}
-        onClick={handleClick}
-    >
-        {startIcon}
-        {title ? <Text>{title}</Text> : null}
-    </Paper>;
+    return (
+        <Paper {...props} className={classList.join(" ")} theme={paperTheme} onClick={handleClick}>
+            {startIcon}
+            {title ? <Text>{title}</Text> : null}
+        </Paper>
+    );
 }

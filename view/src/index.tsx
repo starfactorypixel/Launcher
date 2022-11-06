@@ -6,8 +6,11 @@ import {App} from "./App";
 
 (() => {
     const container: Element | null = document.querySelector(".app");
-    if(container === null) 
-        return;
+    if (container === null) return;
     const root: Root = createRoot(container);
-    root.render(<App />);
+    root.render(
+        <React.StrictMode>
+            <App />
+        </React.StrictMode>
+    );
 })();

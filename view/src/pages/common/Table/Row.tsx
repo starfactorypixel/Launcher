@@ -6,7 +6,5 @@ export interface RowProps {
 }
 
 export function Row({children}: RowProps): React.ReactElement {
-    return <tr className={styles.row}>
-        {children}
-    </tr>;
+    return <tr className={styles.row}>{children}</tr>;
 }

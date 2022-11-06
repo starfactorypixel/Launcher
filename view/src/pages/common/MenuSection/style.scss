@@ -30,11 +30,13 @@
                     opacity: 0.5;
                     cursor: not-allowed !important;
                 }
-                &.button, &.link, &.checkbox {
+                &.button,
+                &.link,
+                &.checkbox {
                     cursor: pointer;
                 }
                 .icon {
-                    fill: #E8EEED;
+                    fill: #e8eeed;
                 }
             }
         }

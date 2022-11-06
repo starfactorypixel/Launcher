@@ -22,7 +22,7 @@
                         width: 235px;
                         height: 586px;
                         fill: none;
-                        stroke: #E8EEED;
+                        stroke: #e8eeed;
                         transform: scale(var(--scale, 1));
                         transform-origin: top;
                     }
@@ -55,28 +55,28 @@
                             align-items: center;
                             width: 45px;
                             height: 45px;
-                            background: var(--second-color, #2F5460);
+                            background: var(--second-color, #2f5460);
                             cursor: pointer;
-                            border: 2px solid var(--first-color, #07AFD4);
+                            border: 2px solid var(--first-color, #07afd4);
                             border-radius: 50%;
                             -webkit-tap-highlight-color: transparent;
                         }
                         > .name {
                             font: normal 13px "Inter Medium";
-                            color: #E8EEED;
+                            color: #e8eeed;
                             padding: 0px 13px;
                             text-align: right;
                             width: 120px;
                         }
                         > .line {
-                            width: 85px; 
+                            width: 85px;
                             height: 2px;
-                            stroke: var(--first-color, #07AFD4);
+                            stroke: var(--first-color, #07afd4);
                         }
                         > .dot {
-                            width: 4px; 
+                            width: 4px;
                             height: 4px;
-                            fill: var(--first-color, #07AFD4);
+                            fill: var(--first-color, #07afd4);
                         }
                         &.lights {
                             top: 20px;
@@ -93,8 +93,8 @@
                                 z-index: 2;
                             }
                             .view {
-                                width: 330px; 
-                                height: 247px; 
+                                width: 330px;
+                                height: 247px;
                                 fill: none;
                             }
                             > .right {
@@ -129,12 +129,12 @@
                             }
                         }
                         &.green-theme {
-                            --first-color: #00F19F;
-                            --second-color: #2B6459;
+                            --first-color: #00f19f;
+                            --second-color: #2b6459;
                         }
                         &.red-theme {
-                            --first-color: #ED0332;
-                            --second-color: #4A2331;
+                            --first-color: #ed0332;
+                            --second-color: #4a2331;
                         }
                         &.skeleton {
                             > .line {
@@ -201,7 +201,7 @@
                         gap: 8px;
                         min-width: 120px;
                         > .name {
-                            color: #E8EEED;
+                            color: #e8eeed;
                             font: normal 12px "Inter Medium";
                         }
                         > .icon-button {
@@ -210,9 +210,9 @@
                             align-items: center;
                             width: 43px;
                             height: 43px;
-                            border: 2px solid var(--first-color, #07AFD4);
+                            border: 2px solid var(--first-color, #07afd4);
                             border-radius: 50%;
-                            background: var(--second-color, #2F5460);
+                            background: var(--second-color, #2f5460);
                         }
                         > .line {
                             display: none;
@@ -221,12 +221,12 @@
                             display: none;
                         }
                         &.green-theme {
-                            --first-color: #00F19F;
-                            --second-color: #2B6459;
+                            --first-color: #00f19f;
+                            --second-color: #2b6459;
                         }
                         &.red-theme {
-                            --first-color: #5A6A73;
-                            --second-color: #3D4A50;
+                            --first-color: #5a6a73;
+                            --second-color: #3d4a50;
                         }
                         &.lights-details {
                             display: none;

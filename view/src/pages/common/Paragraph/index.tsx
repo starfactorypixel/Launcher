@@ -19,11 +19,9 @@ export function Paragraph({className, align, children}: ParagraphProps): React.R
         if (align) {
             classList.push(styles["align-" + align]);
         }
-        
+
         return classList;
     }, [className, align]);
-    
-    return <p className={classList.join(" ")}>
-        {children}
-    </p>;
+
+    return <p className={classList.join(" ")}>{children}</p>;
 }

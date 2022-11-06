@@ -16,25 +16,25 @@
                     cursor: pointer;
                     -webkit-tap-highlight-color: transparent;
                     > .icon {
-                        fill: #5B6B74;
+                        fill: #5b6b74;
                     }
                     > .icon-skeleton {
-                        width: 25px;
-                        height: 25px;
+                        width: 24px;
+                        height: 24px;
                         margin: 7px 0px;
                     }
                     > .name {
                         font: normal 10px "Inter Medium";
-                        color: #5B6B74;
-                        --skeleton-width: 50px;
-                        --skeleton-height: 12px;
+                        color: #5b6b74;
+                        --skeleton-width: 45px;
+                        --skeleton-height: 10px;
                     }
                     &.active {
                         > .icon {
-                            fill: #E8EEED;
+                            fill: #e8eeed;
                         }
                         > .name {
-                            color: #E8EEED;
+                            color: #e8eeed;
                         }
                     }
                     &.conditioner {
@@ -51,22 +51,23 @@
                                 display: inline-flex;
                                 width: 8px;
                                 height: 8px;
-                                border: 1px solid #5B6B74;
+                                border: 1px solid #5b6b74;
                                 border-radius: 50%;
                                 &.active {
-                                    background: #07AFD4;
-                                    border-color: #07AFD4;
+                                    background: #07afd4;
+                                    border-color: #07afd4;
                                 }
                             }
                         }
                         &.active {
                             > .icon {
-                                animation: calc(calc(6 - var(--mode)) * 0.8s) rotation linear Infinite;
+                                animation: calc(calc(6 - var(--mode)) * 0.8s) rotation linear
+                                    Infinite;
                             }
                         }
                     }
                 }
-            }            
+            }
         }
     }
 }

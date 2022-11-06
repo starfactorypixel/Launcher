@@ -13,8 +13,6 @@ export function Flex({children, ...props}: FlexProps): React.ReactElement {
 
         return style;
     }, [props]);
-    
-    return <div style={style}>
-        {children}
-    </div>;
+
+    return <div style={style}>{children}</div>;
 }

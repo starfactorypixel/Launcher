@@ -20,7 +20,7 @@ export const Speed: React.FC = observer(() => {
     useEffect(() => {
         (async () => {
             await new Promise((resolve) => setTimeout(resolve, 1000));
-            
+
             runInAction(() => {
                 store.speed = 160;
                 store.loaded = true;
@@ -28,13 +28,15 @@ export const Speed: React.FC = observer(() => {
         })();
     }, []);
 
-    return <div className={styles.speed}>
-        <Title>Speed</Title>
-        <div className={styles.content}> 
-            <h1 className={styles.value}>
-                {loaded ? speed : <Skeleton />}
-            </h1> 
-            <h4 className={styles.type}>km/h</h4>
+    return (
+        <div className={styles.speed}>
+            <Title>Speed</Title>
+            <div className={styles.content}>
+                <h1 className={styles.value}>{loaded ? speed : <Skeleton />}</h1>
+                <h4 className={styles.type}>km/h</h4>
+            </div>
         </div>
-    </div>;
+    );
 });
+
+Speed.displayName = "Speed";

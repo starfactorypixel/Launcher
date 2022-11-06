@@ -29,7 +29,7 @@ export const Configure: React.FC = observer(() => {
     const {loaded} = store;
 
     const scale = useScale();
-    const lights = useLights(); 
+    const lights = useLights();
     const lightsDetails = useLightsDetails();
     const doors = useDoors();
     const trunks = useTrunks();
@@ -49,50 +49,54 @@ export const Configure: React.FC = observer(() => {
         return {"--scale": scale.toString()};
     }, [scale]);
 
-    return <div className={styles.configure} style={style}>
-        <div className={styles.vehicle}>
-            <div className={styles.settings}>
-                <div className={styles.list}>
-                    {lightsDetails.opened ? (
-                        <LightsDetails onClose={lightsDetails.close} /> 
-                    ): (
-                        <Lights 
-                            mode={lights.mode} 
+    return (
+        <div className={styles.configure} style={style}>
+            <div className={styles.vehicle}>
+                <div className={styles.settings}>
+                    <div className={styles.list}>
+                        {lightsDetails.opened ? (
+                            <LightsDetails onClose={lightsDetails.close} />
+                        ) : (
+                            <Lights
+                                mode={lights.mode}
+                                skeleton={!loaded}
+                                onDetailsOpen={lightsDetails.open}
+                            />
+                        )}
+                        <LeftDoor
+                            locked={doors.left}
                             skeleton={!loaded}
-                            onDetailsOpen={lightsDetails.open} 
-                        /> 
-                    )}
-                    <LeftDoor 
-                        locked={doors.left} 
-                        skeleton={!loaded}
-                        onDoor={doors.toggleLeft} 
-                    />
-                    <RightDoor 
-                        locked={doors.right} 
-                        skeleton={!loaded}
-                        onDoor={doors.toggleRight}
-                    />
-                    <Trunk 
-                        locked={trunks.rear} 
-                        skeleton={!loaded}
-                        onTrunk={trunks.toggleRear} 
-                    />
-                    <FrontTrunk 
-                        locked={trunks.front} 
-                        skeleton={!loaded}
-                        onTrunk={trunks.toggleFront} 
+                            onDoor={doors.toggleLeft}
+                        />
+                        <RightDoor
+                            locked={doors.right}
+                            skeleton={!loaded}
+                            onDoor={doors.toggleRight}
+                        />
+                        <Trunk
+                            locked={trunks.rear}
+                            skeleton={!loaded}
+                            onTrunk={trunks.toggleRear}
+                        />
+                        <FrontTrunk
+                            locked={trunks.front}
+                            skeleton={!loaded}
+                            onTrunk={trunks.toggleFront}
+                        />
+                    </div>
+                    <LightsModal
+                        lights={lights}
+                        open={lightsDetails.opened}
+                        onClose={lightsDetails.close}
                     />
                 </div>
-                <LightsModal
-                    lights={lights}
-                    open={lightsDetails.opened}
-                    onClose={lightsDetails.close}
-                />
-            </div> 
-            <div className={styles.container}>
-                <VehicleImage />
-                <Button onClick={rearCameraHandler}>Rear Camera</Button>
+                <div className={styles.container}>
+                    <VehicleImage />
+                    <Button onClick={rearCameraHandler}>Rear Camera</Button>
+                </div>
             </div>
         </div>
-    </div>;
+    );
 });
+
+Configure.displayName = "Configure";

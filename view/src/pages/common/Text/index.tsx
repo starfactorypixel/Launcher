@@ -7,7 +7,5 @@ export interface TextProps {
 }
 
 export function Text({className, children}: TextProps): React.ReactElement {
-    return <span className={[styles.text, className].join(" ")}>
-        {children}
-    </span>;
+    return <span className={[styles.text, className].join(" ")}>{children}</span>;
 }

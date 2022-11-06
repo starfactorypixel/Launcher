@@ -6,8 +6,10 @@
         "moduleResolution": "Node",
         "strict": true,
         "allowSyntheticDefaultImports": true,
+        "sourceMap": true,
         "baseUrl": "./src",
         "paths": {
+            "@config": ["../../src/config"],
             "@app": ["./App"],
             "@api/*": ["./api/*"],
             "@pages/*": ["./pages/*"]

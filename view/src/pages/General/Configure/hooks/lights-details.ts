@@ -5,8 +5,8 @@ import {useGeneralStore} from "@pages/General/store";
 
 export interface LightsDetails {
     opened: boolean;
-    open: () => any;
-    close: () => any;
+    open: () => void;
+    close: () => void;
 }
 
 export interface LightsDetailsStore {

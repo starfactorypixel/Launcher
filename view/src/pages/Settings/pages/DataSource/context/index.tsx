@@ -12,14 +12,20 @@ export interface DataSourcePageProviderProps {
     children?: React.ReactNode;
 }
 
-export function DataSourcePageProvider({store, children}: DataSourcePageProviderProps): React.ReactElement {
-    const context = useMemo<IDataSourcePageContext>(() => ({
-        store
-    }), [store]);
+export function DataSourcePageProvider({
+    store,
+    children
+}: DataSourcePageProviderProps): React.ReactElement {
+    const context = useMemo<IDataSourcePageContext>(
+        () => ({
+            store
+        }),
+        [store]
+    );
 
-    return <DataSourcePageContext.Provider value={context}>
-        {children}
-    </DataSourcePageContext.Provider>;
+    return (
+        <DataSourcePageContext.Provider value={context}>{children}</DataSourcePageContext.Provider>
+    );
 }
 
 export function useDataSourcePage(): IDataSourcePageContext {

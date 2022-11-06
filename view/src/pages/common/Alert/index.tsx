@@ -20,7 +20,7 @@ export interface AlertErrorProps extends AlertCommonProps {
 export interface AlertAccessProps extends AlertCommonProps {
     type: AlertTypes.ACCESS;
     accessButtonText: string;
-    onAccessButtonClick?: () => any;
+    onAccessButtonClick?: () => void;
 }
 
 export type AlertProps = AlertErrorProps | AlertAccessProps;
@@ -41,24 +41,21 @@ export function Alert({children, ...props}: AlertProps): React.ReactElement {
         switch (props.type) {
             case AlertTypes.ERROR:
                 classList.push(styles.error);
-            break;
+                break;
             case AlertTypes.ACCESS:
                 classList.push(styles.access);
-            break;
+                break;
         }
 
         return classList;
     }, [props.type]);
 
-    return <Paper
-        className={classList.join(" ")}
-        theme={paperTheme}
-    >
-        <Text>{children}</Text>
-        {props.type === AlertTypes.ACCESS ? (
-            <Button onClick={props.onAccessButtonClick}>
-                {props.accessButtonText}
-            </Button>
-        ) : null}
-    </Paper>;
+    return (
+        <Paper className={classList.join(" ")} theme={paperTheme}>
+            <Text>{children}</Text>
+            {props.type === AlertTypes.ACCESS ? (
+                <Button onClick={props.onAccessButtonClick}>{props.accessButtonText}</Button>
+            ) : null}
+        </Paper>
+    );
 }

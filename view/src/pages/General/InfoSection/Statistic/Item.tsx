@@ -7,12 +7,10 @@ export interface ItemProps {
 }
 
 export function Item({icon, value}: ItemProps): React.ReactElement {
-    return <div className={styles.item}>
-        <span className={styles.icon}>
-            {icon}
-        </span>
-        <span className={styles.value}>
-            {value}
-        </span>
-    </div>;
+    return (
+        <div className={styles.item}>
+            <span className={styles.icon}>{icon}</span>
+            <span className={styles.value}>{value}</span>
+        </div>
+    );
 }

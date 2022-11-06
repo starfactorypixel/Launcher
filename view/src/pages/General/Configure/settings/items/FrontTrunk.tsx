@@ -8,27 +8,32 @@ import {FrontTrunkSkeleton} from "./FrontTrunkSkeleton";
 export interface FrontTrunkProps {
     locked?: boolean;
     skeleton?: boolean;
-    onTrunk?: () => any;
+    onTrunk?: () => void;
 }
 
-export function FrontTrunk({locked = false, skeleton = false, onTrunk}: FrontTrunkProps): React.ReactElement {
+export function FrontTrunk({
+    locked = false,
+    skeleton = false,
+    onTrunk
+}: FrontTrunkProps): React.ReactElement {
     if (skeleton) {
         return <FrontTrunkSkeleton />;
     }
 
-    return <Item 
-        className={styles["front-trunk"]}
-        theme={locked ? ItemTheme.RED : ItemTheme.GREEN}
-        column  
-    >
-        <button 
-            className={styles["icon-button"]} 
-            onClick={onTrunk}
+    return (
+        <Item
+            className={styles["front-trunk"]}
+            theme={locked ? ItemTheme.RED : ItemTheme.GREEN}
+            column
         >
-            {locked ? <LockedIcon /> : <UnlockedIcon />}
-        </button>
-        <span className={styles.name}>
-            Front Trunk<br />{locked ? "Locked" : "Unlocked"}
-        </span>
-    </Item>;
+            <button className={styles["icon-button"]} onClick={onTrunk}>
+                {locked ? <LockedIcon /> : <UnlockedIcon />}
+            </button>
+            <span className={styles.name}>
+                Front Trunk
+                <br />
+                {locked ? "Locked" : "Unlocked"}
+            </span>
+        </Item>
+    );
 }

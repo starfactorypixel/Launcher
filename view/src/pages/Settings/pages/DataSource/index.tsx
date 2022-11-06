@@ -20,23 +20,29 @@ export const DataSourcePage: React.FC = observer(() => {
     }));
     const {selected} = store;
 
-    return <DataSourcePageProvider store={store}>
-        <Page
-            verticalAlign="center"
-            hideNavMenu
-            bottomMenu={<BottomMenu />}
-            style={{
-                gap: "32px"
-            }}
-        >
-            {selected ? <>
-                <InfoSection />
-                <ErrorsSection />
-            </> : <NotSelectedSection />}
-            <MenuSection />
-            {!selected ? <ErrorsSection /> : null}
-        </Page>
-    </DataSourcePageProvider>;
+    return (
+        <DataSourcePageProvider store={store}>
+            <Page
+                verticalAlign="center"
+                hideNavMenu
+                bottomMenu={<BottomMenu />}
+                style={{
+                    gap: "32px"
+                }}
+            >
+                {selected ? (
+                    <>
+                        <InfoSection />
+                        <ErrorsSection />
+                    </>
+                ) : (
+                    <NotSelectedSection />
+                )}
+                <MenuSection />
+                {!selected ? <ErrorsSection /> : null}
+            </Page>
+        </DataSourcePageProvider>
+    );
 });
 
 export default DataSourcePage;
