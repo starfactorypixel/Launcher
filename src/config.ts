@@ -11,6 +11,8 @@ export const usageDevTools: boolean = process.env.DEV_TOOLS === "1";
 
 export const usageDevToolsExtensions: boolean = process.env.DEV_TOOLS_EXTENSIONS === "1";
 
+export const usageDockerBuild: boolean = process.env.DOCKER_BUILD === "1";
+
 export const appPath: string = join(__dirname, "..");
 
 export const appVersion: string = require(join(appPath, "./package.json")).version;

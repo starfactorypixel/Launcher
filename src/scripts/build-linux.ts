@@ -1,21 +1,28 @@
 import {build} from "electron-builder";
 import {join} from "path";
-import {appPath} from "../config";
+import {pathExists} from "fs-extra";
+import {mkdir} from "fs/promises";
+import {appPath, usageDockerBuild} from "../config";
 import {exec} from "./utils/exec";
 
 export type BuildLinuxArch = "x64" | "arm64";
 
 export async function buildLinux(arch: BuildLinuxArch = "arm64"): Promise<void> {
-    if (process.platform === "win32") {
+    if (usageDockerBuild && process.platform === "win32") {
         const buildPath: string = join(appPath, "./build");
 
-        await exec("docker build . -t dev2alert/pixel-launcher-linux");
+        if (!(await pathExists(buildPath))) {
+            await mkdir(buildPath);
+        }
+
+        await exec("docker build -f Dockerfile.build-linux -t pixel-launcher-build-linux .");
         await exec(
-            "docker run --rm --name pixel-launcher-linux -v " +
+            "docker run --rm --name pixel-launcher-build-linux -v " +
                 buildPath +
-                ":/app/build -e BUILD_ARCH=" +
+                ":/app/build" +
+                " -e BUILD_ARCH=" +
                 arch +
-                " dev2alert/pixel-launcher-linux"
+                " pixel-launcher-build-linux"
         );
     } else {
         const output: string = join(appPath, "./build/linux-" + arch);

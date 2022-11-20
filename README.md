@@ -85,6 +85,7 @@
     <li><code>DEV_PORT</code> - Dev Server port. Default: 15070.</li>
     <li><code>DEV_TOOLS</code> - Usage DevTools if 1. Default: 0.</li>
     <li><code>DEV_TOOLS_EXTENSIONS</code> - Usage DevTools extensions (React Developer Tools) if 1. Default: 0.</li>
+    <li><code>DOCKER_BUILD</code> - Usage Docker in build. Default: 0.</li>
     <li><code>WEBPACK_DEV</code> - Webpack middleware starting if 1. Default: 0.</li>
 </ul>
 <p><a href="https://www.npmjs.com/package/dotenv">Dotenv</a> support is present!</p>

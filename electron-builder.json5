@@ -9,6 +9,7 @@
     "!**/tsconfig.json",
     "!src",
     "!view/src",
+    "!build",
     ".env"
   ],
   artifactName: "Setup-${arch}.${ext}",

@@ -1,0 +1,33 @@
+name: Build
+on: push
+
+env:
+  FORCE_COLOR: 1
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: node:14
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    - name: Install Docker
+      run: |
+        apt update
+        apt install -y docker.io
+    - name: Install dependencies
+      run: npm i
+    - name: Linter check
+      run: npm run lint
+    - name: Build main (entry point)
+      run: npm run build:main
+    - name: Build view (react app)
+      run: npm run build:view
+    - name: Build Windows (x64)
+      run: npm run build:win
+      env:
+        DOCKER_BUILD: 1
+    - name: Build Linux (arm64)
+      run: npm run build:linux
+    - name: Build Linux (x64)
+      run: npm run build:linux-x64

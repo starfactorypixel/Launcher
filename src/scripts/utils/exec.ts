@@ -6,11 +6,12 @@ export function exec(
 ): Promise<number | null> {
     return new Promise((resolve) => {
         const [commandName, ...commandArgs] = command.split(" ");
-        const process = spawn(commandName, commandArgs, {stdio: "inherit"});
+        const childProcess = spawn(commandName, commandArgs, {stdio: "inherit"});
 
-        process.once("exit", (code) => {
+        childProcess.once("exit", (code) => {
             if (code !== 0 && code !== null) {
                 errorCallback?.(code);
+                process.exit(code);
             }
 
             resolve(code);
