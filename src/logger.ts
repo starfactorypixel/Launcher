@@ -1,4 +1,5 @@
 import * as chalk from "chalk";
+import readline from "readline";
 
 export class Logger {
     public log(message: string, options: Logger.LogOptions = {}): void {
@@ -77,7 +78,7 @@ export class Logger {
                 clearInterval(progressInterval);
 
                 if (clearLine) {
-                    process.stdout.clearLine(0);
+                    readline.clearLine(process.stdout, 0);
                     process.stdout.cursorTo(0);
                 } else {
                     process.stdout.write("\n");

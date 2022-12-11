@@ -1,6 +1,6 @@
 {
   "name": "pixel-launcher",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Launcher for Pixel.",
   "author": {
     "name": "dev2alert",
@@ -17,6 +17,7 @@
     "build:win": "ts-node ./src/scripts/build-win",
     "build:linux": "ts-node ./src/scripts/build-linux",
     "build:linux-x64": "ts-node ./src/scripts/build-linux-x64",
+    "release": "ts-node ./src/scripts/release",
     "lint": "eslint ./src ./view/src --ext .ts,.tsx",
     "lint:fix": "eslint ./src ./view/src --ext .ts,.tsx --fix",
     "format": "prettier --write ./src ./view/src"
@@ -30,6 +31,7 @@
     "@types/webpack-hot-middleware": "^2.25.6",
     "@typescript-eslint/eslint-plugin": "^5.43.0",
     "@typescript-eslint/parser": "^5.43.0",
+    "axios": "^1.2.1",
     "cross-env": "^7.0.3",
     "cross-spawn": "^7.0.3",
     "css-loader": "^6.7.1",
@@ -41,6 +43,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.10",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "mime": "^3.0.0",
     "mobx": "^6.6.2",
     "mobx-react": "^7.5.3",
     "normalize.css": "^8.0.1",
@@ -51,12 +54,13 @@
     "rimraf": "^3.0.2",
     "sass": "^1.56.1",
     "sass-loader": "^13.2.0",
+    "simple-git": "^3.15.1",
     "style-loader": "^3.3.1",
     "ts-loader": "^9.3.1",
     "ts-node": "^10.9.1",
     "tsc-watch": "^5.0.3",
     "typescript": "^4.8.2",
-    "webpack": "^5.74.0",
+    "webpack": "^5.75.0",
     "webpack-cli": "^4.10.0",
     "webpack-dev-middleware": "^5.3.3",
     "webpack-hot-middleware": "^2.25.2"

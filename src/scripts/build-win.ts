@@ -13,6 +13,8 @@ export async function buildWin(): Promise<void> {
             await mkdir(buildPath);
         }
 
+        console.log("Build path:", buildPath);
+
         await exec("docker build -f Dockerfile.build-win -t pixel-launcher-build-win .");
         await exec(
             "docker run --rm --name pixel-launcher-build-win -v " +

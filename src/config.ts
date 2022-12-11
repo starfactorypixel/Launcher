@@ -13,6 +13,8 @@ export const usageDevToolsExtensions: boolean = process.env.DEV_TOOLS_EXTENSIONS
 
 export const usageDockerBuild: boolean = process.env.DOCKER_BUILD === "1";
 
+export const githubToken: string | null = process.env.GITHUB_TOKEN ?? null;
+
 export const appPath: string = join(__dirname, "..");
 
 export const appVersion: string = require(join(appPath, "./package.json")).version;

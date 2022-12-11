@@ -8,13 +8,13 @@ export async function buildAll(): Promise<void> {
     const steps: Logger.LogSteps = {current: 0, max: 5};
 
     steps.current++;
-    logger.log("Build main:", {steps});
+    logger.log("Build main (entry point):", {steps});
     await exec("npm run build:main", (code) => {
         logger.error("Build main with error (code: " + code + ").");
     });
 
     steps.current++;
-    logger.log("Build view:", {steps});
+    logger.log("Build view (react app):", {steps});
     await exec("npm run build:view", (code) => {
         logger.error("Build view with error (code: " + code + ").");
     });

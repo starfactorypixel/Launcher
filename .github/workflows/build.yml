@@ -31,3 +31,7 @@ jobs:
       run: npm run build:linux
     - name: Build Linux (x64)
       run: npm run build:linux-x64
+    - name: Release 🚀
+      run: npm run release
+      env:
+        GITHUB_TOKEN: ${{ secrets.G_TOKEN }}
